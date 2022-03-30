@@ -1,13 +1,17 @@
 import accountStyle from '../../styles/account.module.scss'
+import axios from 'axios';
+import Header from '../../components/Header'
+//adnt design
 import { Row, Col, Form, Input, Button, Checkbox  } from 'antd';
 import { UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined } from '@ant-design/icons';
-import Header from '../../components/Header'
-import axios from 'axios';
+//react query
 import { useMutation } from "react-query"
-import Link from 'next/link'
+//next js
+import Link from "next/Link";
+import { useRouter } from 'next/router'
+//tosify imports
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 
 const sginupExpressApi = async (values)=>{
@@ -15,6 +19,8 @@ const sginupExpressApi = async (values)=>{
 }
 
 const signup = ()=>{
+    const nextRouter = useRouter();
+
     const { mutate:signupMutate, isError } = useMutation(sginupExpressApi, {
         onError:(err)=>{
             if(err.response.data.error){
@@ -30,10 +36,11 @@ const signup = ()=>{
             }
             else{
                 console.log("not erorr else")
-            }
-
-
-           
+            }           
+        },
+        onSuccess:()=>{
+            nextRouter.push("profile")
+            console.log("login success")
         }
     })
 
