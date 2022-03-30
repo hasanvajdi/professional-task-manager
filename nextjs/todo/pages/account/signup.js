@@ -16,20 +16,26 @@ const sginupExpressApi = async (values)=>{
 }
 
 const login = ()=>{
-    const notify = () => toast("Wow so easy !");
 
     const { mutate:signupMutate, isError } = useMutation(sginupExpressApi, {
         onError:(err)=>{
-            console.log("err: ", err.response)
-            toast.error('🦄 Wow so easy!', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            if(err.response.data.error){
+                toast.error(`${err.response.data.error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            else{
+                console.log("not erorr else")
+            }
+
+
+           
         }
     })
 
