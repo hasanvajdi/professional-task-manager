@@ -1,0 +1,207 @@
+@import 'colors';
+@import 'variables';
+@import 'tools';
+
+
+
+.allElements{
+    width: 100%;
+    height: 100vh;
+    position : relative;
+    background-color: $gray-color;
+
+    .headerRow{
+        height:30%;
+        width: 100%;
+        position: relative;
+    
+        .headerCol{
+            height: 100%;
+    
+            .headerImage{
+                width: 100%;
+                background-size: 100% !important;
+            }
+        }
+
+        .loginHeaderCol{
+            position: absolute;
+            top:0;
+        }
+    
+    }
+    
+    
+    .mainRow{
+        background-color: white;
+        width:400px;
+        height: 75%;
+        position : absolute;
+        top : 0;
+        right:0;
+        margin-top : 130px;
+        margin-right : 130px;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+
+
+        .allOfForm{
+            height:100%;
+            .loginFormHeader{
+                height : 70px;
+                background-color: $gray-color;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+    
+                box-shadow: 0 8px 6px -4px lightgray;
+                @include flexBox(row, flex-start);
+    
+    
+                &:hover{
+                    cursor: pointer;
+    
+                    .loginFormUserIcon{
+                        color:black;
+                        @include transition;
+    
+                    }
+                    .loginFormLoginText{
+                        color:black;
+                        @include transition;
+    
+                    }
+                }
+    
+                .loginFormUserIcon{
+                    font-size:20px;
+                    color:gray;
+                    margin-right:15px;
+                }
+    
+                .loginFormLoginText{
+                    font-size:18px;
+                    color:gray;
+                    padding-right:3px;
+                }
+    
+    
+            }
+
+            .selfFormRow{
+                height: 70%;
+
+                .selfFormCol{
+                    @include flexBox(column);
+
+                    .selfLoginForm{
+                        width:90%;
+                        margin-top:50px;
+
+                        .loginForgot{
+                            float: left;
+                            color:gray;
+                            &:hover{
+                                color:black;
+                            }
+                        }
+
+                        .loginFormButton{
+                            width:100%;
+                        }
+
+                        .loginCreateAccount{
+                            text-align:center;
+                            padding-top:10px;
+                            cursor : pointer;
+
+                            &:hover{
+                                color:$green-color2;
+                            }
+
+                            span{
+                                font-size:15px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .loginSocial{
+                height:15%;
+                width:90%;
+                margin-left:auto;
+                margin-right:auto;
+                @include flexBox(row, space-between);
+
+                .loginGithub{
+                    background-color:black;
+                    @include flexBox(row-reverse);
+                    align-content : flex-end;
+                    float : right;
+                    height:50%;
+                    border-radius: $border-radius;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+                .loginGmail{
+                    background-color:#c52625;
+                    @include flexBox(row-reverse);
+                    height:50%;
+                    border-radius: $border-radius;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+                .loginLinkedin{
+
+                    background-color:#3467c2;
+                    @include flexBox(row-reverse);
+                    height:50%;
+                    border-radius: $border-radius;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+                .socialLoginIcon{
+                    font-size:20px;
+                    color:white;
+                }
+
+                span{
+                    font-size:15px;
+                    color:white;
+                    padding-right:5px;
+                    padding-bottom:-5 !important;
+                }
+            }
+        }
+       
+    }
+
+
+    .loginSideTextRow{
+        height:200px;
+        width: 600px;
+        margin-left:30px;
+        margin-top:120px;
+
+        .loginSideTextCol{
+
+            p{
+                color:#606060;
+                font-size:17px;
+                text-align:justify
+            }
+        }
+    }
+}
+
+
+
