@@ -11,12 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const sginupExpressApi = async (values)=>{
-    const a = await axios.post("/api/account/signup/", values)
-    console.log('in express', a)
+    await axios.post("/api/account/signup/", values)
 }
 
-const login = ()=>{
-
+const signup = ()=>{
     const { mutate:signupMutate, isError } = useMutation(sginupExpressApi, {
         onError:(err)=>{
             if(err.response.data.error){
@@ -183,4 +181,4 @@ const login = ()=>{
     )
 }
 
-export default login;
+export default signup;

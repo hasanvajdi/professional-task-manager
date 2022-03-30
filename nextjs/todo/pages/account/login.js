@@ -5,14 +5,38 @@ import Header from '../../components/Header'
 import axios from 'axios';
 import { useMutation } from "react-query"
 import Link from "next/Link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const loginExpressApi = (values)=>{
-    axios.post("/api/account/login/", values)
+const loginExpressApi = async (values)=>{
+    await axios.post("/api/account/login/", values)
 }
 
 const login = ()=>{
-    const { mutate:loginMutate } = useMutation(loginExpressApi)
+    const { mutate:loginMutate } = useMutation(loginExpressApi, {
+        onError:(err)=>{
+            console.log("error mutation")
+            if(err.response.data.error){
+                console.log("error if", err.response.data.error)
+
+                toast.error(`${err.response.data.error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                console.log('after toast')
+            }
+            else{
+                console.log("not erorr else")
+            }
+
+        }
+    })
     
     const onFinish = (values) => {
         loginMutate(values)
@@ -20,6 +44,17 @@ const login = ()=>{
 
     return(
        <div className={accountStyle.allElements}>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Row className={accountStyle.headerRow}>
                 <Col className={accountStyle.headerCol} span={24}>
                     <img src="/account-header.svg" className={accountStyle.headerImage }/>

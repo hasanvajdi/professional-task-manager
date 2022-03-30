@@ -8,14 +8,14 @@ const nextSignup = async (req, res)=>{
         const data = await apiSignup(signupData)
         res.setHeader('Set-Cookie',
             [
-                cookie.serialize('access', data.access_token, {
+                cookie.serialize('access_token', data.access_token, {
                     secure: true,
                     httpOnly: true,
                     sameSite: "lax",
                     path: '/',
                 }),
         
-                cookie.serialize('refresh', data.refresh_token, {
+                cookie.serialize('refresh_token', data.refresh_token, {
                     secure: true,
                     httpOnly: true,
                     sameSite: "lax",
@@ -23,7 +23,9 @@ const nextSignup = async (req, res)=>{
                 }),
             ]
         );  
+        res.status(200).json({"success":"you registred in successfully"})
     }
+    
     catch(err){
         let errorText = ""
         console.log("error: ", err.response.data)

@@ -6,28 +6,41 @@ import { setCookies } from 'cookies-next';
 
 const nextLogin = async (req, res)=>{
     const loginData = JSON.stringify(req.body)
-    const data = await apilogin(loginData)
+    try{
 
-    res.setHeader('Set-Cookie',
-        [
-            cookie.serialize('access', data.access_token, {
-                secure: true,
-                httpOnly: true,
-                sameSite: "lax",
-                path: '/',
-            }),
+        const data = await apilogin(loginData)
     
-            cookie.serialize('refresh', data.refresh_token, {
-                secure: true,
-                httpOnly: true,
-                sameSite: "lax",
-                path: '/',
-            }),
-        ]
-    );
+        res.setHeader('Set-Cookie',
+            [
+                cookie.serialize('access_token', data.access_token, {
+                    secure: true,
+                    httpOnly: true,
+                    sameSite: "lax",
+                    path: '/',
+                }),
+        
+                cookie.serialize('refresh_token', data.refresh_token, {
+                    secure: true,
+                    httpOnly: true,
+                    sameSite: "lax",
+                    path: '/',
+                }),
+            ]
+        );
+        
+        res.status(200).json({"success":"you logged in successfully"})
 
-    res.status(200).json({"success":"you logged in successfully"})
-  
+    }
+    catch(err){
+        console.log("err login : ", err.response.data)
+
+        let errorText = ""
+        if(err.response.data.non_field_errors){
+            errorText = "اطلاعات وارد شده اشتباه است"
+        }
+        console.log(errorText)
+        res.status(400).json({"error":`${errorText}`})
+    }  
 }
 
 export default nextLogin;
