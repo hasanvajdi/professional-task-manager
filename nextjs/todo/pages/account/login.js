@@ -6,7 +6,7 @@ import axios from 'axios';
 import Header from '../../components/Header'
 //adnt design
 import { Row, Col, Form, Input, Button, Checkbox, Spin, Result } from 'antd';
-import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined } from '@ant-design/icons';
+import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined, ConsoleSqlOutlined } from '@ant-design/icons';
 //react query
 import { useMutation } from "react-query"
 //next js
@@ -28,6 +28,7 @@ const login = ()=>{
 
     const { mutate:loginMutate } = useMutation(loginExpressApi, {
         onError:(err)=>{
+            setSpinState(false)
             if(err.response.data.error){
                 console.log("error if", err.response.data.error)
 
@@ -42,16 +43,19 @@ const login = ()=>{
                 });
             }
         },
-        onSuccess:()=>{
-            //const myTimeout = setTimeout(()=>{null}, 10000);
-            //clearTimeout(myTimeout);
+        
+        onSuccess: ()=>{
             setIndicatorIcon(<Result
                 status="success"
-                title="اطلاعات شما صحیح بود"
-                subTitle="در حال پردازش برای انتقال به پروفایل شما"
+                title="اطلاعات شما صحیح است"
+                subTitle="در حال انتقال به پروفایل شما..."
+                className='animate__animated animate__fadeInDown'
             />)
-            nextRouter.push("profile")
-            console.log("login success")
+
+            setTimeout(()=>{
+                console.log("lk")
+                nextRouter.push("profile")
+            }, 4000)
         }
     })
     

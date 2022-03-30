@@ -6,3 +6,45 @@
 *{
     font-family: yekan;
 }
+
+
+/* ant design styles */
+
+.ant-spin{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color : rgb(255, 255, 255, 0.6);
+    height : 100vh !important;
+    max-height: none !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+}
+
+.ant-result{
+    width : 400px !important;
+}
+
+
+.ant-spin-dot{
+    position: none !important;
+    top: 25% !important;
+    left :auto !important;  
+    margin: none !important;
+}
+
+
+.ant-result-title{
+    font-size : 30px !important;
+}
+
+.ant-result-subtitle{
+    font-size : 16px !important;
+    background-color: #05595B;
+    padding: 7px !important;
+    color:white !important;
+    border-radius : 3px;
+}
