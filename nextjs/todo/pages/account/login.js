@@ -29,9 +29,8 @@ const login = ()=>{
     const { mutate:loginMutate } = useMutation(loginExpressApi, {
         onError:(err)=>{
             setSpinState(false)
+            
             if(err.response.data.error){
-                console.log("error if", err.response.data.error)
-
                 toast.error(`${err.response.data.error}`, {
                     position: "top-center",
                     autoClose: 5000,
@@ -53,7 +52,6 @@ const login = ()=>{
             />)
 
             setTimeout(()=>{
-                console.log("lk")
                 nextRouter.push("profile")
             }, 4000)
         }
@@ -191,7 +189,7 @@ const login = ()=>{
                     </Col>
                 </Row>
 
-        </div>
+            </div>
        </Spin>
 
         
