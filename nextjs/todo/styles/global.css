@@ -43,8 +43,7 @@
 
 .ant-result-subtitle{
     font-size : 16px !important;
-    background-color: #05595B;
+    color: #05595B !important;
     padding: 7px !important;
-    color:white !important;
     border-radius : 3px;
 }

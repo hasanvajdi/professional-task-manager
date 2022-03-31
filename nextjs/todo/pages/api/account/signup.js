@@ -28,19 +28,30 @@ const nextSignup = async (req, res)=>{
     
     catch(err){
         let errorText = ""
-        console.log("error: ", err.response.data)
-        if(err.response.data.non_field_errors){
-            errorText = "تکرار رمز عبور یکسان نیست"
+
+        if(err.response){
+
+            if(err.response.data.non_field_errors){
+                errorText = "تکرار رمز عبور یکسان نیست"
+            }
+
+            else if (err.response.data.username){
+                errorText = "این نام کاربری قبلا ثبت شده است"
+            }
+
+            else if (err.response.data.password1){
+                errorText = "رمز وارد شده کوتاه است. حداقل 8 کاراکتر وارد کنید"
+            }
+
+            else if (err.response.data.password2){
+                errorText = "تکرار رمز عبور نمی تواند خالی باشد"
+            }      
         }
-        else if (err.response.data.username){
-            errorText = "این نام کاربری قبلا ثبت شده است"
+        
+        else{
+            errorText = "خطا در ارتباط با سرور"
         }
-        else if (err.response.data.password1){
-            errorText = "رمز وارد شده کوتاه است. حداقل 8 کاراکتر وارد کنید"
-        }
-        else if (err.response.data.password2){
-            errorText = "تکرار رمز عبور نمی تواند خالی باشد"
-        }      
+
         res.status(400).json({"error":`${errorText}`})
     }
 
