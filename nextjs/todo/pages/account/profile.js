@@ -1,4 +1,4 @@
-import { Row, Col, Menu, Dropdown, } from 'antd';
+import { Row, Col, Menu, Dropdown, Divider } from 'antd';
 import { LogoutOutlined, UserSwitchOutlined, EditOutlined, CaretDownOutlined, UserOutlined, CheckCircleOutlined, LoadingOutlined, FolderOpenOutlined } from '@ant-design/icons';
 import profileStyle from '../../styles/profile.module.scss'
 import Image from 'next/image'
@@ -37,28 +37,40 @@ const profile = ()=>{
                     </Col>
                 </Row>
 
-                <Row className={profileStyle.profileBody}  align="middle" justify="center">
-                    <Col className={profileStyle.allTasks} span={7} >
-                        <div className={profileStyle.allTasksHeader}>
-                            <span>همه</span>
-                            <FolderOpenOutlined className={profileStyle.allTasksIcon} />
-                        </div>
-                    </Col>
+                <Row className={profileStyle.profileBody}>
+                    <Col className={profileStyle.allStatisticsCol}>
 
-                    <Col className={profileStyle.doingTasks} span={7} >
-                        <div className={profileStyle.doingTasksHeader}>
-                            <span>در حال انجام</span>
-                            <LoadingOutlined className={profileStyle.doingTasksIcon} />
-                        </div>
-                    </Col>
+                        <Row className={profileStyle.allStatisticsColRow} justify="space-between" >
 
-                    <Col className={profileStyle.finishedTasks} span={7} >
-                        <div className={profileStyle.finishedHeader}>
-                            <span>تمام شده</span>
-                            <CheckCircleOutlined className={profileStyle.finishedTasksIcon} />
-                        </div>                    
+                            <Col className={profileStyle.allStatisticsGroups} span={7}>
+                                <span>25</span>
+                                <span>کل گروه ها</span>
+                            </Col>
+
+                            <Col className={profileStyle.allStatisticsUsers} span={7}>
+                                <span>100</span>
+                                <span>کل کاربر ها</span>
+                            </Col>
+
+                            <Col className={profileStyle.allStatisticsTasks} span={7}>
+                                <span>8057</span>
+                                <span>کل وظیفه ها</span>
+                            </Col>
+                        </Row>
+
+                        <Row className={profileStyle.groupRow} justify="space-between">
+                            <Col span={17} className={profileStyle.groupList} >
+                                <span>لیست گروه ها</span>
+                            </Col>
+
+                            <Col span={6} className={profileStyle.groupMostWork} >
+                                <span>پر کار ترین گروه ها</span>
+                            </Col>
+                        </Row>
+
                     </Col>
                 </Row>
+                
             </div>
         </>
     )
