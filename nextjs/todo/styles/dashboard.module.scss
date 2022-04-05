@@ -1,0 +1,406 @@
+@import "colors";
+@import "variables";
+@import "tools";
+
+
+
+.profileContainer{
+    box-shadow: $box-shadow;
+    background-color: $gray-color;
+    @include flexBox(column);
+    height: auto;
+    
+    .profileHeader{
+        width : 100%;
+        height : 60px;
+        background-color: white;
+    
+        .headerUserContainer{
+            @include flexBox();
+            .headerUserIcon{
+                @include flexBox();
+                margin-right : 18px;
+                font-size : 23px;
+                display: flex;
+                align-items: center;
+                background-color: $gray-color;
+                color : gray;
+                width : 37px;
+                height : 37px;
+                border-radius: 50%;
+                margin-top : auto;
+                margin-bottom : auto;
+                cursor : pointer;
+            }
+    
+            
+            .headerNavIcon{
+                margin : auto 7px auto 0px;
+                font-size : 15px;
+                color :#686868;
+                font-weight: bold !important;
+    
+                &:hover{
+                    color : black;
+                    cursor : pointer;
+                }
+            }
+        }
+
+
+        .headerSettingCol{
+            @include flexBox();
+            justify-content: end;
+
+            .headerSettingIcon{
+                font-size : 23px;
+                margin-left : 18px;
+                color:gray;
+                @include transition(0.3s);
+
+                &:hover{
+                    color:black;
+                    cursor: pointer;
+                }
+            }
+        }
+    
+    }
+
+
+    .profileBody{
+        width : 80%;
+        
+
+        .allStatisticsCol{
+            width: 100%;
+            height: auto !important;
+            margin-top : 50px;
+           
+    
+            .allStatisticsColRow{
+                width: 100%;
+                height : 14%;
+                margin-top : 30px;
+    
+                .allStatisticsGroups{
+                    height : 100%;
+                    background-color: #4b2d83;
+                    border-radius: 7px !important;
+                    box-shadow: 0px 5px 10px rgb(224, 224, 224);
+                    @include flexBox(column);
+    
+                    span:nth-child(1){
+                        font-size : 40px;
+                        color:white;
+                    }
+    
+                    span:nth-child(2){
+                        font-size :20px;
+                        color:white;
+                    }
+                }
+    
+                .allStatisticsUsers{
+                    height : 100%;
+                    background-color: #96242f;
+                    border-radius: 7px !important;
+                    box-shadow: 0px 5px 10px rgb(224, 224, 224);
+                    @include flexBox(column);
+    
+                    span:nth-child(1){
+                        font-size : 40px;
+                        color:white;
+                    }
+    
+                    span:nth-child(2){
+                        font-size :20px;
+                        color:white;
+                    }
+                }
+    
+                .allStatisticsTasks{
+                    height : 100%;
+                    background-color:#3c6efd;
+                    border-radius: 7px !important;
+                    box-shadow: 0px 5px 10px rgb(224, 224, 224);
+                    @include flexBox(column);
+    
+                    span:nth-child(1){
+                        font-size : 40px;
+                        color:white;
+                    }
+    
+                    span:nth-child(2){
+                        font-size :20px;
+                        color:white;
+                    }
+                }
+            }
+    
+    
+            .groupRow{
+                width: 100%;
+                height : 200px;
+                margin-top:50px;
+    
+                .groupList{
+                    background-color:white;
+                    border-radius : $border-radius;
+                    box-shadow : $box-shadow;
+                    border-top : 2px solid #4b2d83;
+                    color:gray;
+                    font-size : 15px;
+
+                    &:hover{
+                        span{
+                            color:black;
+                        }
+
+                        .groupListIcon{
+                            color : #4b2d83;
+                        }
+                    }
+
+                    div{
+                        border-bottom : 1px solid lightgray;
+                        display: flex;
+                        align-items: center;
+                        padding-top : 8px;
+                        padding-bottom: 8px;
+
+                        span{
+                            margin-right : 12px;
+                        }
+
+                        .groupListIcon{
+                            font-size : 19px;
+                            margin-right : auto;
+                            margin-left: 12px;
+                        }
+                    }
+                }
+                
+    
+                .groupMostWork{
+                    background-color:white;
+                    border-radius : $border-radius;
+                    box-shadow : $box-shadow;
+                    border-top : 2px solid #4b2d83;
+                    color:gray;
+                    font-size : 15px;
+                    text-align : right;
+                    
+                    &:hover{
+                        span{
+                            color:black;
+                        }
+
+                        .groupMostWorkIcon{
+                            color:#4b2d83;
+                        }
+                    }
+    
+                    div{
+                        display: flex;
+                        align-items: center;
+                        border-bottom : 1px solid lightgray;
+
+                        span{
+                            padding-right : 10px;
+                            padding-top : 8px;
+                            padding-bottom : 8px;
+                        }
+
+                        .groupMostWorkIcon{
+                            margin-right : auto;
+                            font-size : 19px;
+                            margin-left : 10px;
+                        }
+                    }
+                }
+    
+            }
+
+            .userStatisticRow{
+                @extend .allStatisticsColRow;
+                margin-top : 70px;
+
+                .userStatisticToday{
+                    @extend .allStatisticsGroups;
+                    background-color : #D32F2F !important;
+                }
+
+                .userStatisticRecent{
+                    @extend .allStatisticsUsers;
+                    background-color : #FFC400 !important;
+
+                }
+                
+                .userStatisticOnline{
+                    @extend .allStatisticsTasks;
+                    background-color : #00C853 !important;
+                }
+
+            }
+    
+            .usersRow{
+                width: 100%;
+                height : 200px;
+                margin-top:50px;
+    
+                .userList{
+                    background-color:white;
+                    border-radius : $border-radius;
+                    box-shadow : $box-shadow;
+                    border-top : 2px solid #96242f;
+                    color:gray;
+                    
+                    &:hover{
+                        span, .userListIcon{
+                            color:black;
+                        }
+
+                        .userListIcon{
+                            color: #96242f;
+                        }
+                    }
+                    
+
+                    div{
+                        display: flex;
+                        align-items: center;
+                        border-bottom : 1px solid lightgray;
+                        padding-top : 8px;
+                        padding-bottom: 8px;
+
+
+                        span{
+                            margin-right: 12px;
+                            font-size : 15px;
+                        }
+                        
+                        .userListIcon{
+                            font-size :19px;
+                            margin-right : auto;
+                            margin-left : 12px;
+                        }
+
+                    }
+                    
+                }
+                
+    
+                .todayUsers{
+                    background-color:white;
+                    border-radius : $border-radius;
+                    box-shadow : $box-shadow;
+                    border-top : 2px solid #96242f;
+                    color:gray;
+                    font-size : 15px;
+                    text-align : right;
+                    
+                    &:hover{
+                        span{
+                            color:black;
+                        }
+
+                        .todayUsersIcon{
+                            color : #96242f;
+                        }
+                    }
+    
+                    div{
+                        display: flex;
+                        align-items: center;
+                        border-bottom : 1px solid lightgray;
+                        padding-top : 8px;
+                        padding-bottom : 8px;
+
+                        span{
+                            padding-right : 10px;
+                        }
+
+                        .todayUsersIcon{
+                            margin-right : auto;
+                            margin-left : 10px;
+                            font-size : 19px;
+                        }
+                    }
+                }
+    
+            }
+
+            .tasksRow{
+                @extend .usersRow;
+
+                .tasksList{
+                    @extend .userList;
+                    border-color : #3c6efd !important;
+
+                    &:hover{
+                        .taskListIcon{
+                            color : #3c6efd !important;
+                        }
+
+                    }
+                    div{
+                        display: flex;
+                        align-items: center;
+                        border-bottom : 1px solid lightgray;
+                        padding-top : 8px;
+                        padding-bottom: 8px;
+
+                        span{
+                            margin-right: 12px;
+                            font-size : 15px;
+                        }
+
+                        .taskListIcon{
+                            @extend .userListIcon;
+                        }
+                    }
+                }
+    
+                .lastTasks{
+                    @extend .todayUsers;
+                    border-color : #3c6efd !important;
+                  
+                    &:hover{
+                        .lastTasksIcon{
+                            color : #3c6efd;
+                        }
+                    }
+
+                    div{
+                        .lastTasksIcon{
+                            margin-right : auto;
+                            margin-left : 10px;
+                            font-size : 19px;
+                            padding-left : 0 !important;
+                        }
+                    }
+                }
+            }
+
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+.userMenuItem{
+    .userMenuIcon{
+        font-size : 18px;
+        color : gray;
+    }
+}
+
+.userMenuLogout{
+    color:red;
+}

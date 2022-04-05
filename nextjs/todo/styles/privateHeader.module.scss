@@ -1,0 +1,29 @@
+@import 'colors';
+@import 'variables';
+@import 'tools';
+
+
+
+.header{
+    
+    .headerNav{
+        .headerUl{
+            list-style-type: none;
+            @include flexBox();
+
+            .headerUlOption{
+                color : white;
+                padding-right : 15px;
+                padding-left : 15px;
+                margin-top : 15px;
+                font-size : 15px;
+
+                &:hover{
+                    color:$yellow-color;
+                    cursor: pointer;
+                    @include transition();
+                }
+            }
+        }
+    }
+}

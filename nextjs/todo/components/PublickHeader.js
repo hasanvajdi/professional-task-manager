@@ -1,7 +1,7 @@
 import headerStyle from "../styles/header.module.scss"
 
 
-const Header = ()=>{
+const PublickHeader = ()=>{
     return(
         <header className={`${headerStyle.header} animate__animated animate__fadeInDown` } >
             <nav className={headerStyle.headerNav}>
@@ -16,4 +16,4 @@ const Header = ()=>{
     )
 }
 
-export default Header;
+export default PublickHeader;

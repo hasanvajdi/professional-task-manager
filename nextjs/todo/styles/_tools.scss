@@ -5,8 +5,8 @@
     align-items: $align;
 }
 
-@mixin transition {
+@mixin transition($duration:0.3s) {
     transition-property: all;
-    transition-duration: 0.3s;
+    transition-duration: $duration;
     transition-timing-function: ease-in;
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 //other
 import accountStyle from '../../styles/account.module.scss'
 import axios from 'axios';
-import Header from '../../components/Header'
+import Header from '../../components/PublickHeader.js'
 //adnt design
 import { Row, Col, Form, Input, Button, Spin, Result  } from 'antd';
 import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined } from '@ant-design/icons';
@@ -53,7 +53,7 @@ const signup = ()=>{
             />)
 
             setTimeout(()=>{
-                nextRouter.push("profile")
+                nextRouter.push("dashboard")
             }, 4000)
         }
     })
