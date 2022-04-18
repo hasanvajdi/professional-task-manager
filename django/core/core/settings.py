@@ -40,11 +40,12 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-
+    'rest_framework_simplejwt',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     
     'django.contrib.sites',
+    'rest_framework_simplejwt.token_blacklist',
 
 
     'allauth',
@@ -154,10 +155,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',    
+        #'dj_rest_auth.jwt_auth.JWTCookieAuthentication',   
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', 
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
@@ -168,6 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 
+
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'access'
+JWT_AUTH_COOKIE = 'access_token'
 JWT_AUTH_REFRESH_COOKIE = 'refresh'

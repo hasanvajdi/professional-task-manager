@@ -9,9 +9,11 @@ import { Row, Col, Form, Input, Button, Checkbox, Spin, Result } from 'antd';
 import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined, ConsoleSqlOutlined } from '@ant-design/icons';
 //react query
 import { useMutation } from "react-query"
+
 //next js
 import Link from "next/Link";
 import { useRouter } from 'next/router'
+
 //tosify imports
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

@@ -1,8 +1,24 @@
+import PrivateHeader from '../../components/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
+
+import { useEffect } from 'react';
+import JwtToken from '../api/account/jwt_token';
+
+
+//ant design
 import { Row, Col, Menu, Dropdown, Divider } from 'antd';
 import { LogoutOutlined, UserSwitchOutlined, EditOutlined, CaretDownOutlined, UserOutlined, SettingFilled} from '@ant-design/icons';
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
-import PrivateHeader from '../../components/PrivateHeader';
+
+//api folder
+import * as api from '../../api'
+
+//react query
+import { useQuery } from 'react-query';
+import axios from 'axios';
+
+
+
 
 const userMenu = (
     <Menu>
@@ -22,11 +38,18 @@ const userMenu = (
     </Menu>
 );
 
-const dashboard = ()=>{
+
+const dashboard = ({groups, tasks, users})=>{
+    //const { data:groupsData } = useQuery("groups", api.getGroups,  { initialData:groups.list })
+    //const { data:tasksData } = useQuery("tasks", api.getTasks,  { initialData:tasks.list })
+    //const { data:usersData } = useQuery("tasks", api.getUsers,  { initialData:users.list })
+
+    //console.log("hasan: ", groupsData)
+   
 
     return(
         <div className={dashboardStyle.profileContainer} style={{height:"auto !important"}}>
-                <Row className={dashboardStyle.profileHeader}>
+            <Row className={dashboardStyle.profileHeader}>
                     <Col className={dashboardStyle.headerUserContainer} span={2} >
                         <UserOutlined className={dashboardStyle.headerUserIcon} />
                         <Dropdown overlay={userMenu} trigger={['click']}>
@@ -40,34 +63,49 @@ const dashboard = ()=>{
                         <SettingFilled className={dashboardStyle.headerSettingIcon} />
                     </Col>
 
-                </Row>
+            </Row>
 
-                <Row className={dashboardStyle.profileBody}>
+            <Row className={dashboardStyle.profileBody}>
                     <Col className={dashboardStyle.allStatisticsCol}>
 
                         <Row className={dashboardStyle.allStatisticsColRow} justify="space-between" >
 
                             <Col className={dashboardStyle.allStatisticsGroups} span={7}>
-                                <span>۲۴</span>
+                                <span>{groups.list?.length}</span>
                                 <span>کل گروه ها</span>
                             </Col>
 
                             <Col className={dashboardStyle.allStatisticsUsers} span={7}>
-                                <span>۱۰۰</span>
+                                <span>{ users.list?.length }</span>
                                 <span>کل کاربر ها</span>
                             </Col>
 
                             <Col className={dashboardStyle.allStatisticsTasks} span={7}>
-                                <span>۲۳۴۲</span>
+                                <span>{ tasks.list?.length }</span>
                                 <span>کل وظیفه ها</span>
                             </Col>
                         </Row>
 
                         <Row className={dashboardStyle.groupRow} justify="space-between">
                             <Col span={17} className={dashboardStyle.groupList} >
-                               <div>
+                               <div className={dashboardStyle.groupRowDiv}>
                                     <span>لیست گروه ها</span>
                                     <BsPeopleFill className={dashboardStyle.groupListIcon}/>
+                               </div>
+                               <div className={dashboardStyle.groupRowList}>
+                                    {
+                                        groups.list.length > 0 || groups.list ? groups.list.map((group, key)=>{
+                                            return <div className={dashboardStyle.eachGroup} key={key}>
+                                                        <div className={dashboardStyle.groupName}>
+                                                            { group.name }
+                                                        </div>
+                                                        <div className={dashboardStyle.groupSee}>
+                                                            <span className={dashboardStyle.groupSeeText}>مشاهده</span>
+                                                        </div>
+                                                    </div>
+                                        }) 
+                                        : "no group"
+                                    }
                                </div>
                             </Col>
 
@@ -131,13 +169,45 @@ const dashboard = ()=>{
                         </Row>
 
                     </Col>
-                </Row>
+            </Row>
 
-
-                
-                
-            </div>
+        </div>
     )
 }
+
+
+
+export async function getServerSideProps(context){
+    ///const a = await JwtToken()
+    //const {data}  = await axios.post('/api/account/jwt_token/')
+    //console.log("data : ", data)
+    //console.log("context : ", context.req.cookies)
+    JwtToken(context.req)
+    const groups    = await api.getGroups()
+    const tasks     = await api.getTasks()
+    const users     = await api.getUsers()
+
+    
+
+    return {
+        props : {
+            groups : {
+                list : groups,
+            },
+
+            tasks : {
+                list : tasks,
+            },
+
+            "users" : {
+                list : users,
+            }
+        }
+    }
+}
+
+
+
+
 
 export default dashboard;

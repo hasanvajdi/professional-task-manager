@@ -3,21 +3,22 @@ from django.contrib.auth.models import User
 import random, string, uuid
 
 
+
+
 def user_avatar(instance, filename):
     return f'profile_avatar/{instance.user.id}_avatar.jpg'
-
-
 
 class Profile(models.Model):
     user        = models.OneToOneField(User, on_delete=models.CASCADE) #which user realted to this profile
     first_name  = models.CharField(max_length=50, blank=True)
     last_name   = models.CharField(max_length=80, blank=True)
-    avatar      = models.ImageField(upload_to=user_avatar)
+    avatar      = models.ImageField(upload_to=user_avatar, blank=True)
     biograhpy   = models.CharField(max_length=200, blank=True)
 
 
     def __str__(self):
         return self.user.username
+
 
 
 
@@ -44,8 +45,8 @@ class Group(models.Model):
 
 
 
-class Task(models.Model):
 
+class Task(models.Model):
     STATUS_CHOICE  = [
         ("C", "Created"),
         ("D", "Doing"),
@@ -56,8 +57,9 @@ class Task(models.Model):
     title           = models.CharField(max_length=100)
     description     = models.TextField()
     status          = models.CharField(max_length=1, default="C", choices=STATUS_CHOICE)
-    group           = models.OneToOneField(Group, on_delete=models.CASCADE)
+    group           = models.ManyToManyField(Group)
     created_date    = models.DateTimeField(auto_now_add=True)
+    finished_date   = models.DateTimeField(null=True)
     duration        = models.CharField(max_length=200, blank=True)
 
 

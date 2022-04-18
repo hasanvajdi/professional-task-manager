@@ -1,7 +1,6 @@
 import { apilogin } from '../../../api'
 import cookie from 'cookie';
 
-import { setCookies } from 'cookies-next';
 
 
 const nextLogin = async (req, res)=>{
