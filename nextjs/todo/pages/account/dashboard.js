@@ -1,21 +1,19 @@
 import PrivateHeader from '../../components/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
 
-import { useEffect } from 'react';
 import JwtToken from '../api/account/jwt_token';
 
+import { useRouter } from 'next/router'
 
 //ant design
-import { Row, Col, Menu, Dropdown, Divider } from 'antd';
+import { Row, Col, Menu, Dropdown } from 'antd';
 import { LogoutOutlined, UserSwitchOutlined, EditOutlined, CaretDownOutlined, UserOutlined, SettingFilled} from '@ant-design/icons';
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
 
 //api folder
 import * as api from '../../api'
 
-//react query
-import { useQuery } from 'react-query';
-import axios from 'axios';
+//
 
 
 
@@ -40,12 +38,6 @@ const userMenu = (
 
 
 const dashboard = ({groups, tasks, users})=>{
-    //const { data:groupsData } = useQuery("groups", api.getGroups,  { initialData:groups.list })
-    //const { data:tasksData } = useQuery("tasks", api.getTasks,  { initialData:tasks.list })
-    //const { data:usersData } = useQuery("tasks", api.getUsers,  { initialData:users.list })
-
-    //console.log("hasan: ", groupsData)
-   
 
     return(
         <div className={dashboardStyle.profileContainer} style={{height:"auto !important"}}>
@@ -178,8 +170,16 @@ const dashboard = ({groups, tasks, users})=>{
 
 
 export async function getServerSideProps(context){
-    JwtToken(context.req, context.res)
-    
+    const JwtTokenResult = await JwtToken(context.req, context.res)
+    if (JwtTokenResult === "Auth Error"){
+        return {
+            redirect: {
+                destination: '/account/login',
+                permanent: false,
+            },
+        }
+    }
+
     const groups    = await api.getGroups()
     const tasks     = await api.getTasks()
     const users     = await api.getUsers()
