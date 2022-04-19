@@ -54,7 +54,7 @@ const signup = ()=>{
 
             setTimeout(()=>{
                 nextRouter.push("dashboard")
-            }, 4000)
+            }, 2000)
         }
     })
 

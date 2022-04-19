@@ -64,37 +64,40 @@ const getUsers = async ()=>{
 
 const apiJwtToken = async (tokens)=>{
 
-    api.post("/dj-rest-auth/token/verify/", 
-                JSON.stringify({"token":tokens.access_token}),
-                {
-                    headers:{
-                        "Content-Type":"application/json",
-                    },
-                }
-            )
-    .then(resAccessVerify=>{
-        console.log("access is ok")
-    })
-    .catch(errAccessVerify=>{
-        console.log("access error")
-        api.post("/dj-rest-auth/token/refresh/", 
-            JSON.stringify({"refresh":tokens.refresh_token}),
+    try{
+
+        const { data } = await api.post("/dj-rest-auth/token/verify/", 
+            JSON.stringify({"token":tokens.access_token}),
             {
                 headers:{
                     "Content-Type":"application/json",
                 },
             }
         )
-        .then(resRefreshVerify=>{
-            console.log("refresh is ok")
-        })
-        .catch(errRefreshVerify=>{
-            console.log("refresh error", errRefreshVerify)
-        })
-    })
+        return {"valid":"access token is valid"}
+    }
+    catch (error){
+        if(error.response.status === 401){
+            try{
 
+                const { data } = await api.post("/dj-rest-auth/token/refresh/", 
+                    JSON.stringify({"refresh":tokens.refresh_token}),
+                    {
+                        headers:{
+                            "Content-Type":"application/json",
+                        },
+                    }
+                )
+                return data
+            }
+            catch (refreshError){
+                return {"error":"Auth Error"}
+            }
+        }
+    }
+   
+    
 
-    //return data
 }
 
 

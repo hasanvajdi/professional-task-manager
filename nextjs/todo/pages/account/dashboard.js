@@ -178,11 +178,8 @@ const dashboard = ({groups, tasks, users})=>{
 
 
 export async function getServerSideProps(context){
-    ///const a = await JwtToken()
-    //const {data}  = await axios.post('/api/account/jwt_token/')
-    //console.log("data : ", data)
-    //console.log("context : ", context.req.cookies)
-    JwtToken(context.req)
+    JwtToken(context.req, context.res)
+    
     const groups    = await api.getGroups()
     const tasks     = await api.getTasks()
     const users     = await api.getUsers()
