@@ -171,20 +171,18 @@ const dashboard = ({groups, tasks, users})=>{
 
 export async function getServerSideProps(context){
     const JwtTokenResult = await JwtToken(context.req, context.res)
-    if (JwtTokenResult === "Auth Error"){
+    
+    if (JwtTokenResult === "Auth Error" || JwtTokenResult === "bad request"){
         return {
             redirect: {
                 destination: '/account/login',
-                permanent: false,
             },
         }
     }
-
+    
     const groups    = await api.getGroups()
     const tasks     = await api.getTasks()
     const users     = await api.getUsers()
-
-    
 
     return {
         props : {

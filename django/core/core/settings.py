@@ -158,9 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'dj_rest_auth.jwt_auth.JWTCookieAuthentication',   
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', 
-        #'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
 
     'DEFAULT_PERMISSION_CLASSES': (
@@ -176,4 +174,4 @@ MEDIA_URL = "/media/"
 
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'access_token'
-JWT_AUTH_REFRESH_COOKIE = 'refresh'
+JWT_AUTH_REFRESH_COOKIE = 'refresh_token'

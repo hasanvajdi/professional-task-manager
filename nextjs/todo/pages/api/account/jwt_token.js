@@ -4,23 +4,29 @@ import { apiJwtToken } from '../../../api'
 
 
 const JwtToken = async (req, res)=>{
-    const authResult = await apiJwtToken(req.cookies)
+    console.log("in jwt")
 
-    if (authResult.access){
-        res.setHeader('Set-Cookie',
-            [
-                cookie.serialize('access_token', authResult.access, {
-                    secure: true,
-                    httpOnly: true,
-                    sameSite: "lax",
-                    path: '/',
-                }),
-            ]
-        );
+    const authResult = await apiJwtToken(req.cookies)
+    console.log("before authResult", authResult)
+
+    if(authResult){
+        if (authResult.access){
+            res.setHeader('Set-Cookie',
+                [
+                    cookie.serialize('access_token', authResult.access, {
+                        secure: true,
+                        httpOnly: true, 
+                        sameSite: "lax",
+                        path: '/',
+                    }),
+                ]
+            );
+        }
+        else if (authResult.error){
+            return authResult.error
+        }
     }
-    else if (authResult.error){
-        return authResult.error
-    }
+    
 }
 
 export default JwtToken;

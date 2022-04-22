@@ -2,7 +2,9 @@ import axios from 'axios';
 
 
 const api = axios.create({
-    baseURL : "http://localhost:8000"
+    baseURL : "http://localhost:8000",
+    withCredentials: true,
+
 })
 
 
@@ -29,32 +31,19 @@ const apiSignup = async (values)=>{
 
 
 const getGroups = async ()=>{
-    
-    try{
-        const gdata = await api.get("/group", {
-            withCredentials: true,
-            
-        })
-        return gdata.data
-    }
-    catch( gerror){
-        console.log("gerror")
-    }
+    console.log("in api group")
+    const { data } = await api.get("/group", { withCredentials: true })
+    return data
 }
 
 
 const getTasks = async ()=>{
-
-    const { data } = await api.get("/task", {
-        withCredentials: true,
-    })
+    const { data } = await api.get("/task")
     return data
 }
 
 
 const getUsers = async ()=>{
-    
-
     const { data } = await api.get("/profile", {
         withCredentials: true,
     })
@@ -63,9 +52,7 @@ const getUsers = async ()=>{
 
 
 const apiJwtToken = async (tokens)=>{
-
     try{
-
         const { data } = await api.post("/dj-rest-auth/token/verify/", 
             JSON.stringify({"token":tokens.access_token}),
             {
@@ -74,12 +61,13 @@ const apiJwtToken = async (tokens)=>{
                 },
             }
         )
+        console.log("apiJwtToken return")
+
         return {"valid":"access token is valid"}
     }
     catch (error){
-        if(error.response.status === 401){
+        if(error.response.status === 401 && tokens.refresh_token){
             try{
-
                 const { data } = await api.post("/dj-rest-auth/token/refresh/", 
                     JSON.stringify({"refresh":tokens.refresh_token}),
                     {
@@ -94,10 +82,11 @@ const apiJwtToken = async (tokens)=>{
                 return {"error":"Auth Error"}
             }
         }
+        else{
+            console.log("bad request")
+            return {"error":"bad request"}
+        }
     }
-   
-    
-
 }
 
 
