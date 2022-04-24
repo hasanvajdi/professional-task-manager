@@ -17,11 +17,12 @@ class GroupViewset(ModelViewSet):
     queryset             = Group.objects.all()
     serializer_class     = GroupSerializer
 
+    
 
     def list(self, request):
-        #print("user : ", request.__dict__)
+        print("cookies : ", request.user)
+            
         group_list = Group.objects.filter(owner = request.user.id)
-        #print("user2 : ", request.cookies)
         serializer = GroupSerializer(group_list, many=True)
         return Response(serializer.data)
         

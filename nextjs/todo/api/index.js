@@ -3,8 +3,6 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL : "http://localhost:8000",
-    withCredentials: true,
-
 })
 
 
@@ -13,7 +11,6 @@ const apilogin = async (values)=>{
         headers:{
             "Content-Type":"application/json",
         },
-        withCredentials: true,
     })
     return data
 }
@@ -24,34 +21,43 @@ const apiSignup = async (values)=>{
             headers:{
                 "Content-Type":"application/json",
             },
-            withCredentials: true,
         })
     return data
 }
 
 
-const getGroups = async ()=>{
-    console.log("in api group")
-    const { data } = await api.get("/group", { withCredentials: true })
+const getGroups = async (access_token)=>{
+    const { data } = await api.get("/group", {
+        headers:{
+            'Authorization' : 'Bearer ' + access_token,
+        }
+        })
     return data
 }
 
 
-const getTasks = async ()=>{
-    const { data } = await api.get("/task")
-    return data
-}
-
-
-const getUsers = async ()=>{
-    const { data } = await api.get("/profile", {
-        withCredentials: true,
+const getTasks = async (access_token)=>{
+    const { data } = await api.get("/task",{
+        headers:{
+            'Authorization' : 'Bearer ' + access_token,
+        }
     })
     return data
 }
 
 
+const getUsers = async (access_token)=>{
+    const { data } = await api.get("/profile", {
+        headers:{
+            'Authorization' : 'Bearer ' + access_token,
+        }
+        })
+    return data
+}
+
+
 const apiJwtToken = async (tokens)=>{
+    
     try{
         const { data } = await api.post("/dj-rest-auth/token/verify/", 
             JSON.stringify({"token":tokens.access_token}),
@@ -61,7 +67,6 @@ const apiJwtToken = async (tokens)=>{
                 },
             }
         )
-        console.log("apiJwtToken return")
 
         return {"valid":"access token is valid"}
     }
@@ -83,7 +88,6 @@ const apiJwtToken = async (tokens)=>{
             }
         }
         else{
-            console.log("bad request")
             return {"error":"bad request"}
         }
     }

@@ -166,13 +166,20 @@ const dashboard = ({groups, tasks, users})=>{
         </div>
     )
 }
-
+    
 
 
 export async function getServerSideProps(context){
     const JwtTokenResult = await JwtToken(context.req, context.res)
-    
-    if (JwtTokenResult === "Auth Error" || JwtTokenResult === "bad request"){
+    var access_token = null
+
+    if (JwtTokenResult.valid){
+        access_token = context.req.cookies.access_token;
+    }
+    else if (JwtTokenResult.access){
+        access_token = JwtTokenResult.access
+    }
+    else if (JwtTokenResult.error){
         return {
             redirect: {
                 destination: '/account/login',
@@ -180,9 +187,10 @@ export async function getServerSideProps(context){
         }
     }
     
-    const groups    = await api.getGroups()
-    const tasks     = await api.getTasks()
-    const users     = await api.getUsers()
+    
+    const groups    = await api.getGroups(access_token)
+    const tasks     = await api.getTasks(access_token)
+    const users     = await api.getUsers(access_token)
 
     return {
         props : {
@@ -199,10 +207,8 @@ export async function getServerSideProps(context){
             }
         }
     }
+
 }
-
-
-
 
 
 export default dashboard;

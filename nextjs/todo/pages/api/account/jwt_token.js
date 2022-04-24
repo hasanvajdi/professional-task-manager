@@ -4,10 +4,8 @@ import { apiJwtToken } from '../../../api'
 
 
 const JwtToken = async (req, res)=>{
-    console.log("in jwt")
 
     const authResult = await apiJwtToken(req.cookies)
-    console.log("before authResult", authResult)
 
     if(authResult){
         if (authResult.access){
@@ -22,9 +20,8 @@ const JwtToken = async (req, res)=>{
                 ]
             );
         }
-        else if (authResult.error){
-            return authResult.error
-        }
+        
+        return authResult
     }
     
 }
