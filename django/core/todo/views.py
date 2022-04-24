@@ -12,6 +12,20 @@ class ProfileViewset(ModelViewSet):
     serializer_class    = ProfileSerializer
 
 
+    def list(self, request):
+        members_list = [] # the members list keeper
+        group_list = Group.objects.filter(owner = request.user.id) # get all groups
+
+        for group in group_list: # explore in the group list
+            for member in group.members.all(): # get the each gorup members
+                if member not in members_list: # check the user already exist is list or not
+                    members_list.append(member.id) #  append user.id profile to members list
+        
+        profile_list = Profile.objects.filter(user__in=members_list)
+        serializer = ProfileSerializer(profile_list, many=True)
+        return Response(serializer.data)
+
+
 
 class GroupViewset(ModelViewSet):
     queryset             = Group.objects.all()
@@ -19,9 +33,7 @@ class GroupViewset(ModelViewSet):
 
     
 
-    def list(self, request):
-        print("cookies : ", request.user)
-            
+    def list(self, request):            
         group_list = Group.objects.filter(owner = request.user.id)
         serializer = GroupSerializer(group_list, many=True)
         return Response(serializer.data)
