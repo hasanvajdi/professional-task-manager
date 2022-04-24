@@ -26,6 +26,19 @@ const apiSignup = async (values)=>{
 }
 
 
+const apiLogout = async (refresh_token)=>{
+    const { data } = await api.post("/dj-rest-auth/logout/", JSON.stringify({refresh:refresh_token}), 
+        {
+            headers:{
+                "Content-Type":"application/json",
+            },
+        }
+    )
+    console.log(" logoute data :", data)
+    return data
+}
+
+
 const getGroups = async (access_token)=>{
     const { data } = await api.get("/group", {
         headers:{
@@ -98,6 +111,7 @@ const apiJwtToken = async (tokens)=>{
 export{
     apilogin,
     apiSignup,
+    apiLogout,
     getGroups,
     getTasks,
     getUsers,

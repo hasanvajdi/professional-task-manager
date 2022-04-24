@@ -12,10 +12,16 @@ import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } fr
 
 //api folder
 import * as api from '../../api'
+import axios from 'axios';
 
 //
 
 
+const logout = ()=>{
+    axios.post("/api/account/logout/")
+    //if data === "you logged out successfully":
+
+}
 
 
 const userMenu = (
@@ -30,7 +36,7 @@ const userMenu = (
 
       <Menu.Divider />
 
-      <Menu.Item key="3" icon={<LogoutOutlined className={[dashboardStyle.userMenuIcon]} style={{color:"red"}}/>} className={[dashboardStyle.userMenuItem, dashboardStyle.userMenuLogout]}>
+      <Menu.Item onClick={logout} key="3" icon={<LogoutOutlined className={[dashboardStyle.userMenuIcon]} style={{color:"red"}}/>} className={[dashboardStyle.userMenuItem, dashboardStyle.userMenuLogout]}>
         <sapn>خروج از حساب</sapn>
       </Menu.Item>
     </Menu>
