@@ -274,7 +274,7 @@
                     }
                     
 
-                    div{
+                    .usersRowDiv{
                         display: flex;
                         align-items: center;
                         border-bottom : 1px solid lightgray;
@@ -293,6 +293,10 @@
                             margin-left : 12px;
                         }
 
+                    }
+
+                    .usersRowList{
+                        height: 80%;
                     }
                     
                 }

@@ -1,4 +1,5 @@
 import groupStyle from '../styles/components/group.module.scss'
+import {EyeOutlined} from "@ant-design/icons"
 
 const Group = ({ data })=>{
     return (
@@ -7,10 +8,11 @@ const Group = ({ data })=>{
                 { data.name }
             </div>
             <div className={groupStyle.groupSee}>
-                <span className={groupStyle.groupSeeText}>مشاهده</span>
+                <EyeOutlined className={groupStyle.groupSeeIcon}/>
             </div>
         </div>
     )
 }
+
 
 export default Group;

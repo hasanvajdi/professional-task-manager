@@ -14,6 +14,7 @@ import axios from 'axios';
 
 // components
 import Group from '../../components/Group'
+import User from '../../components/User'
 
 
 const logout = async ()=>{
@@ -140,9 +141,18 @@ const dashboard = ({groups, tasks, users})=>{
                         <Row className={dashboardStyle.usersRow} justify="space-between">
                           
                             <Col span={17} className={dashboardStyle.userList} >
-                                <div>
+                                <div className={dashboardStyle.usersRowDiv}>
                                     <span>لیست کاربران</span>
                                     <BsPersonFill className={dashboardStyle.userListIcon}/>
+                                </div>
+
+                                <div className={dashboardStyle.usersRowList}>
+                                    {
+                                        users.list.length > 0 || users.list ? users.list.map((user, key)=>{
+                                            return <User key={key} data={user} />
+                                        })
+                                        : "no users"
+                                    }
                                 </div>
                             </Col>
 
@@ -212,7 +222,7 @@ export async function getServerSideProps(context){
                 list : tasks,
             },
 
-            "users" : {
+            users : {
                 list : users,
             }
         }

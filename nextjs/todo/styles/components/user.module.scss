@@ -3,7 +3,8 @@
 @import '../tools';
 
 
-.eachGroup{
+
+.eachuser{
     padding-top : 8px;
     padding-bottom : 8px;
     display: flex;
@@ -14,24 +15,24 @@
         cursor : pointer;
         @include transition(0.5s);
 
-        .groupSeeText{
+        .userSeeText{
             @include transition(0.5s);
 
             opacity: 1 !important;
         }
     }
 
-    .groupName{
+    .userName{
         padding-right : 12px;
         width : 30%;
         font-size : 17px;
     }
 
-    .groupSee{
+    .userSee{
         margin-right : auto;
         width: 20%;
 
-        .groupSeeIcon{
+        .userSeeIcon{
             float : left;
             margin-left : 12px;
             padding : 5px;
