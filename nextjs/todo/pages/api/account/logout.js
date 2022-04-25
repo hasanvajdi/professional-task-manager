@@ -22,9 +22,7 @@ const logout = async (req, res)=>{
             }),
         ]
     )
-    
-    res.redirect(200, '/')
-    
+    res.status(200).json({"success":"you logged out successfully"})
 }
 
 export default logout;

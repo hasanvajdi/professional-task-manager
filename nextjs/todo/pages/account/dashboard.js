@@ -1,8 +1,6 @@
 import PrivateHeader from '../../components/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
-
 import JwtToken from '../api/account/jwt_token';
-
 import { useRouter } from 'next/router'
 
 //ant design
@@ -14,36 +12,49 @@ import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } fr
 import * as api from '../../api'
 import axios from 'axios';
 
-//
+// components
+import Group from '../../components/Group'
 
 
-const logout = ()=>{
-    axios.post("/api/account/logout/")
-    //if data === "you logged out successfully":
-
+const logout = async ()=>{
+    const { data } = await axios.post("/api/account/logout/")
+    console.log("data :", data)
+    return data
 }
 
 
-const userMenu = (
-    <Menu>
-      <Menu.Item key="0" icon={<EditOutlined className={dashboardStyle.userMenuIcon}/>} className={dashboardStyle.userMenuItem}>
-        <span>ویرایش پروفایل</span>
-      </Menu.Item>
 
-      <Menu.Item key="1" icon={<UserSwitchOutlined className={dashboardStyle.userMenuIcon}/>} className={dashboardStyle.userMenuItem}>
-        <span>وظایف شخصی</span>
-      </Menu.Item>
-
-      <Menu.Divider />
-
-      <Menu.Item onClick={logout} key="3" icon={<LogoutOutlined className={[dashboardStyle.userMenuIcon]} style={{color:"red"}}/>} className={[dashboardStyle.userMenuItem, dashboardStyle.userMenuLogout]}>
-        <sapn>خروج از حساب</sapn>
-      </Menu.Item>
-    </Menu>
-);
 
 
 const dashboard = ({groups, tasks, users})=>{
+    const router = useRouter()
+
+    const logoutClickHandler = async ()=>{
+        const logoutResult = await logout()
+        if (logoutResult.success){
+            router.push("/home")
+        }
+    }
+
+    const userMenu = (
+        <Menu>
+          <Menu.Item key="0" icon={<EditOutlined className={dashboardStyle.userMenuIcon}/>} className={dashboardStyle.userMenuItem}>
+            <span>ویرایش پروفایل</span>
+          </Menu.Item>
+    
+          <Menu.Item key="1" icon={<UserSwitchOutlined className={dashboardStyle.userMenuIcon}/>} className={dashboardStyle.userMenuItem}>
+            <span>وظایف شخصی</span>
+          </Menu.Item>
+    
+          <Menu.Divider />
+    
+          <Menu.Item onClick={logoutClickHandler} key="3" icon={<LogoutOutlined className={[dashboardStyle.userMenuIcon]} style={{color:"red"}}/>} className={[dashboardStyle.userMenuItem, dashboardStyle.userMenuLogout]}>
+            <sapn>خروج از حساب</sapn>
+          </Menu.Item>
+        </Menu>
+    );
+
+    
 
     return(
         <div className={dashboardStyle.profileContainer} style={{height:"auto !important"}}>
@@ -93,14 +104,7 @@ const dashboard = ({groups, tasks, users})=>{
                                <div className={dashboardStyle.groupRowList}>
                                     {
                                         groups.list.length > 0 || groups.list ? groups.list.map((group, key)=>{
-                                            return <div className={dashboardStyle.eachGroup} key={key}>
-                                                        <div className={dashboardStyle.groupName}>
-                                                            { group.name }
-                                                        </div>
-                                                        <div className={dashboardStyle.groupSee}>
-                                                            <span className={dashboardStyle.groupSeeText}>مشاهده</span>
-                                                        </div>
-                                                    </div>
+                                            return <Group key={key} data={group}/>
                                         }) 
                                         : "no group"
                                     }
