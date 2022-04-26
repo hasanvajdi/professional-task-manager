@@ -15,11 +15,12 @@ import axios from 'axios';
 // components
 import Group from '../../components/Group'
 import User from '../../components/User'
+import Task from '../../components/Task'
+
 
 
 const logout = async ()=>{
     const { data } = await axios.post("/api/account/logout/")
-    console.log("data :", data)
     return data
 }
 
@@ -166,10 +167,24 @@ const dashboard = ({groups, tasks, users})=>{
 
                         <Row className={dashboardStyle.tasksRow} justify="space-between">
                             <Col span={17} className={dashboardStyle.tasksList} >
+
                                 <div className={dashboardStyle.tasksRowDiv}>
                                     <span>لیست وظایف</span>
                                     <BsListTask className={dashboardStyle.taskListIcon}/>
                                 </div>
+
+                                <div className={dashboardStyle.userRowList}>
+                                    {
+                                        tasks.list ? 
+                                            tasks.list.length > 0 ?
+                                                tasks.list.map((task, key)=>{
+                                                    return <Task key={key} data={task} />
+                                                })
+                                            :<span>no task</span>
+                                        :<span>no task list</span>
+                                    }   
+                                </div>
+
                             </Col>
 
                             <Col span={6} className={dashboardStyle.lastTasks} >

@@ -1,5 +1,5 @@
 import groupStyle from '../styles/components/group.module.scss'
-import {EyeOutlined} from "@ant-design/icons"
+import { EyeOutlined } from "@ant-design/icons"
 
 const Group = ({ data })=>{
     return (
