@@ -14,9 +14,8 @@
         cursor : pointer;
         @include transition(0.5s);
 
-        .groupSeeText{
+        .groupSeeIcon{
             @include transition(0.5s);
-
             opacity: 1 !important;
         }
     }

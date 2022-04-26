@@ -264,8 +264,10 @@
                     color:gray;
                     
                     &:hover{
-                        span, .userListIcon{
-                            color:black;
+                        .usersRowDiv{
+                            span{
+                                color:black;
+                            }
                         }
 
                         .userListIcon{
@@ -355,7 +357,8 @@
                         }
 
                     }
-                    div{
+
+                    .tasksRowDiv{
                         display: flex;
                         align-items: center;
                         border-bottom : 1px solid lightgray;
@@ -369,6 +372,8 @@
 
                         .taskListIcon{
                             @extend .userListIcon;
+                            margin-right : auto;
+                            margin-left : 12px;
                         }
                     }
                 }

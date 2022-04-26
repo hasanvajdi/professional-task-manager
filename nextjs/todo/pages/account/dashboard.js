@@ -166,7 +166,7 @@ const dashboard = ({groups, tasks, users})=>{
 
                         <Row className={dashboardStyle.tasksRow} justify="space-between">
                             <Col span={17} className={dashboardStyle.tasksList} >
-                                <div>
+                                <div className={dashboardStyle.tasksRowDiv}>
                                     <span>لیست وظایف</span>
                                     <BsListTask className={dashboardStyle.taskListIcon}/>
                                 </div>

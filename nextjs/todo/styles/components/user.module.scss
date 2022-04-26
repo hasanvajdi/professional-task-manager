@@ -4,7 +4,7 @@
 
 
 
-.eachuser{
+.eachUser{
     padding-top : 8px;
     padding-bottom : 8px;
     display: flex;
@@ -15,9 +15,8 @@
         cursor : pointer;
         @include transition(0.5s);
 
-        .userSeeText{
+        .userSeeIcon{
             @include transition(0.5s);
-
             opacity: 1 !important;
         }
     }
@@ -26,6 +25,10 @@
         padding-right : 12px;
         width : 30%;
         font-size : 17px;
+
+        &:hover{
+            color : gray !important;
+        }
     }
 
     .userSee{
@@ -42,7 +45,7 @@
             color:gray !important;
 
             &:hover{
-                color:#4b2d83 !important;
+                color:#96242f !important;
             }
         }   
     }
