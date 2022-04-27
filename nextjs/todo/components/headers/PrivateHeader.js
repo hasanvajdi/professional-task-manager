@@ -1,4 +1,4 @@
-import privateHeaderStyle from "../styles/privateHeader.module.scss"
+import privateHeaderStyle from "../../styles/privateHeader.module.scss"
 
 
 const PrivateHeader = ()=>{

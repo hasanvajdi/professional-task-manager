@@ -1,4 +1,6 @@
-import PrivateHeader from '../../components/PrivateHeader';
+import { useState } from 'react';
+
+import PrivateHeader from '../../components/headers/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
 import JwtToken from '../api/account/jwt_token';
 import { useRouter } from 'next/router'
@@ -30,6 +32,10 @@ const logout = async ()=>{
 
 const dashboard = ({groups, tasks, users})=>{
     const router = useRouter()
+
+   
+   
+
 
     const logoutClickHandler = async ()=>{
         const logoutResult = await logout()
@@ -106,7 +112,10 @@ const dashboard = ({groups, tasks, users})=>{
                                <div className={dashboardStyle.groupRowList}>
                                     {
                                         groups.list.length > 0 || groups.list ? groups.list.map((group, key)=>{
-                                            return <Group key={key} data={group}/>
+                                            return <Group 
+                                                        key={key} 
+                                                        data={group} 
+                                                    />
                                         }) 
                                         : "no group"
                                     }

@@ -1,4 +1,4 @@
-import headerStyle from "../styles/header.module.scss"
+import headerStyle from "../../styles/header.module.scss"
 
 
 const PublickHeader = ()=>{

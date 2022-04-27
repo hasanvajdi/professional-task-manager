@@ -3,7 +3,7 @@ import { useState } from 'react';
 //other
 import accountStyle from '../../styles/account.module.scss'
 import axios from 'axios';
-import Header from '../../components/PublickHeader.js'
+import Header from '../../components/headers/PublickHeader.js'
 //adnt design
 import { Row, Col, Form, Input, Button, Spin, Result  } from 'antd';
 import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined } from '@ant-design/icons';
