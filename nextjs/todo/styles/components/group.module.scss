@@ -56,3 +56,103 @@
     margin-right : 5px;
     color :gray;
 }
+
+
+.groupModalContainer{
+    @include flexBox(column);
+    
+    .groupLinkContainer{
+        @include flexBox(row);
+        background-color: #f2f2f2;
+        width : 100%;
+        height : 40px;
+        border-left : 4px solid #3c6efd;
+        border-radius: $border-radius;
+        margin-top : 15px;
+        .copyContainer{
+            @include flexBox(row);
+            color:gray;
+            margin-left : auto;
+            height: 100%;
+            width : 11%;
+            border-top-right-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+
+
+            &:hover{
+                background-color: #3c6efd;
+                color:white;
+                cursor : pointer;
+                @include transition();
+            }
+            .copyIcon{
+                padding-right : 3px;
+            }
+        }
+
+
+        .groupLinkText{
+            margin-right : auto;
+            margin-left : 10px;
+            font-size : 15px;
+            color:#404040;
+        }
+    }
+
+    .groupIdContainer{
+        @include flexBox(row);
+        background-color: #f2f2f2;
+        height : 30px;
+        width : 100%;
+        margin-top : 20px;
+        border-radius : $border-radius;
+        
+        span:nth-child(1){
+            color:#404040;
+            font-size : 17px;
+        }
+
+        span:nth-child(2){
+            color:gray;
+            padding-right : 5px;
+            direction : ltr;
+            margin-top : 3px;
+        }
+    }
+
+    .groupOwnerMembersDateContainer{
+        @include flexBox(row, space-between);
+        width: 100%;
+        margin-top : 20px;
+
+        .groupOwner{
+            .groupOwnerText{
+                font-size : 17px;
+                color:#404040; 
+            }
+
+            .groupOwnerUsername{
+                font-size : 15px;
+                color:gray;
+
+                &:hover{
+                    color:$green-color1;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .groupMembers{
+            margin-left : 40%;
+            .groupMembersText{
+                font-size : 17px;
+                color:#404040;   
+            }
+
+            .groupMembersCount{
+                font-size : 17px;
+            }
+        }
+    }
+}
+

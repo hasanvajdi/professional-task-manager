@@ -18,6 +18,8 @@ class ProfileSerializer(ModelSerializer):
 
 
 class GroupSerializer(ModelSerializer):
+    owner = UserSerializer()
+    
     class Meta:
         model = Group
         fields = "__all__"
