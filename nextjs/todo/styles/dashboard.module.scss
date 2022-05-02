@@ -405,11 +405,6 @@
 }
 
 
-
-
-
-
-
 .userMenuItem{
     .userMenuIcon{
         font-size : 18px;
@@ -419,4 +414,27 @@
 
 .userMenuLogout{
     color:red;
+}
+
+
+.noDataContainer{
+    @include flexBox(column);
+    height: 100%;
+
+    &:hover{
+        .noDataIcon, .noDataText{
+            color:lightgray !important;
+        }
+    }
+
+    .noDataIcon{
+        font-size : 50px;
+        color: lightgray !important;
+    }
+
+    .noDataText{
+        margin-top: 10px;
+        font-size: 17px;
+        color: lightgray !important;
+    }
 }

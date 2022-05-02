@@ -7,7 +7,11 @@ import { useRouter } from 'next/router'
 
 //ant design
 import { Row, Col, Menu, Dropdown } from 'antd';
-import { LogoutOutlined, UserSwitchOutlined, EditOutlined, CaretDownOutlined, UserOutlined, SettingFilled} from '@ant-design/icons';
+import { 
+            LogoutOutlined, UserSwitchOutlined, EditOutlined, 
+            CaretDownOutlined, UserOutlined, SettingFilled, 
+            FrownOutlined
+        } from '@ant-design/icons';
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
 
 //api folder
@@ -27,15 +31,12 @@ const logout = async ()=>{
 }
 
 
+const dashboard = (props)=>{
+    const [groups, setGroups] = useState(props.groups)
+    const [tasks, setTasks] = useState(props.tasks)
+    const [users, setUsers] = useState(props.users)
 
-
-
-const dashboard = ({groups, tasks, users})=>{
     const router = useRouter()
-
-   
-   
-
 
     const logoutClickHandler = async ()=>{
         const logoutResult = await logout()
@@ -109,15 +110,22 @@ const dashboard = ({groups, tasks, users})=>{
                                     <span>لیست گروه ها</span>
                                     <BsPeopleFill className={dashboardStyle.groupListIcon}/>
                                </div>
-                               <div className={dashboardStyle.groupRowList}>
-                                    {
-                                        groups.list.length > 0 || groups.list ? groups.list.map((group, key)=>{
-                                            return <Group 
-                                                        key={key} 
-                                                        data={group} 
-                                                    />
-                                        }) 
-                                        : "no group"
+                               <div className={dashboardStyle.groupRowList} >
+                                    {   
+                                        groups.list ?
+                                            groups.list.length > 0 ?
+                                                groups.list.map((group, key)=>{
+                                                    return <Group 
+                                                                key={key} 
+                                                                data={group} 
+                                                            />
+                                                })
+                                            : <div className={dashboardStyle.noDataContainer}>
+                                                <FrownOutlined className={dashboardStyle.noDataIcon}/>
+                                                <span className={dashboardStyle.noDataText}>there isn't any group</span>
+                                              </div>
+
+                                        : <span>there is not groups</span>
                                     }
                                </div>
                             </Col>
@@ -157,11 +165,18 @@ const dashboard = ({groups, tasks, users})=>{
                                 </div>
 
                                 <div className={dashboardStyle.usersRowList}>
-                                    {
-                                        users.list.length > 0 || users.list ? users.list.map((user, key)=>{
-                                            return <User key={key} data={user} />
-                                        })
-                                        : "no users"
+                                    {   
+                                        users ?
+                                            users.list.length > 0 ?
+                                                users.list.map((user, key)=>{
+                                                    return <User key={key} data={user} />
+
+                                                })
+                                            : <div className={dashboardStyle.noDataContainer}>
+                                                <FrownOutlined className={dashboardStyle.noDataIcon}/>
+                                                <span className={dashboardStyle.noDataText}>there isn't any user</span>
+                                              </div>
+                                        : <span>no users</span>
                                     }
                                 </div>
                             </Col>
@@ -189,8 +204,11 @@ const dashboard = ({groups, tasks, users})=>{
                                                 tasks.list.map((task, key)=>{
                                                     return <Task key={key} data={task} />
                                                 })
-                                            :<span>no task</span>
-                                        :<span>no task list</span>
+                                            : <div className={dashboardStyle.noDataContainer}>
+                                                <FrownOutlined className={dashboardStyle.noDataIcon}/>
+                                                <span className={dashboardStyle.noDataText}>there isn't any task</span>
+                                              </div>
+                                        : <span>no tasks</span>
                                     }   
                                 </div>
 
