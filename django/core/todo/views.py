@@ -29,13 +29,19 @@ class ProfileViewset(ModelViewSet):
 
 class GroupViewset(ModelViewSet):
     queryset             = Group.objects.all()
-    serializer_class     = GroupSerializer
+    serializer_class     = GroupCreateSerializer
 
-    
+    #def get_serializer_class(self):
+        #if self.action == 'list':
+        #    return serializers.ListaGruppi
+        #if self.action == 'retrieve':
+        #    return serializers.DettaglioGruppi
+        #return serializers.Default # I dont' know what you want for create/destroy/update.        
 
     def list(self, request):            
         group_list = Group.objects.filter(owner = request.user.id)
-        serializer = GroupSerializer(group_list, many=True)
+        serializer = GroupListSerializer(group_list, many=True)
+        print(serializer.data)
         return Response(serializer.data)
         
 

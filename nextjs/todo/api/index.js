@@ -34,7 +34,6 @@ const apiLogout = async (refresh_token)=>{
             },
         }
     )
-    console.log(" logoute data :", data)
     return data
 }
 

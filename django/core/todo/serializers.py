@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 
 
 
+
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ["id", "username"]
 
 
 class ProfileSerializer(ModelSerializer):
@@ -17,12 +18,19 @@ class ProfileSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class GroupSerializer(ModelSerializer):
-    owner = UserSerializer()
-    
+
+class GroupCreateSerializer(ModelSerializer):
     class Meta:
         model = Group
         fields = "__all__"
+
+
+class GroupListSerializer(ModelSerializer):
+    owner = UserSerializer()
+    class Meta:
+        model = Group
+        fields = "__all__"
+
 
 
 class TaskSerializer(ModelSerializer):

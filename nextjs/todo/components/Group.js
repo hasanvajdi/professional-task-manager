@@ -7,7 +7,7 @@ import { Modal, Badge } from 'antd'
 
 const Group = ({ data })=>{
     const [modalVisiblity, setModalVisiblity] = useState(false)
-    console.log("data :", data)
+    console.log("data :", data.user)
     const handleCancel=() => {
         setModalVisiblity(false)
     };

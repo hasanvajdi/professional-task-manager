@@ -55,7 +55,7 @@ const login = ()=>{
 
             setTimeout(()=>{
                 nextRouter.push("dashboard")
-            }, 2000)
+            }, 1000)
         }
     })
     
