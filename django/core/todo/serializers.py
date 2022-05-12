@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from . models import *
 from django.contrib.auth.models import User
 
@@ -24,12 +24,28 @@ class GroupCreateSerializer(ModelSerializer):
         model = Group
         fields = "__all__"
 
+ 
+
+
+
 
 class GroupListSerializer(ModelSerializer):
     owner = UserSerializer()
+    created_date = SerializerMethodField()
+
     class Meta:
         model = Group
         fields = "__all__"
+    
+
+    def get_created_date(self, obj):
+        print("careated_time : ", obj.created_date)
+        return {
+            "date" : obj.created_date.strftime("%Y/%m/%d"),
+            "time" : obj.created_date.strftime("%H:%M")
+        }
+
+
 
 
 

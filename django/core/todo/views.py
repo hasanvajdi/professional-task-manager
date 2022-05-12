@@ -39,9 +39,8 @@ class GroupViewset(ModelViewSet):
         #return serializers.Default # I dont' know what you want for create/destroy/update.        
 
     def list(self, request):            
-        group_list = Group.objects.filter(owner = request.user.id)
+        group_list = Group.objects.filter(owner = request.user.id).order_by("-created_date")
         serializer = GroupListSerializer(group_list, many=True)
-        print(serializer.data)
         return Response(serializer.data)
         
 

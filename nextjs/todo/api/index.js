@@ -106,6 +106,12 @@ const apiJwtToken = async (tokens)=>{
 }
 
 
+const deleteObj = async (typeobj, id)=>{
+    const { data } = api.delete(`${typeobj}/${id}`)
+    console.log("del data :", data)
+}
+
+
 
 export{
     apilogin,
@@ -115,4 +121,5 @@ export{
     getTasks,
     getUsers,
     apiJwtToken,
+    deleteObj
 }
