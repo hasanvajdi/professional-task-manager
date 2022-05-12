@@ -121,11 +121,13 @@
     }
 
     .groupOwnerMembersDateContainer{
-        @include flexBox(row, space-between);
+        @include flexBox(row);
         width: 100%;
-        margin-top : 20px;
+        margin-top : 40px;
 
         .groupOwner{
+            width: 30%;
+
             .groupOwnerText{
                 font-size : 17px;
                 color:#404040; 
@@ -143,7 +145,7 @@
         }
 
         .groupMembers{
-            margin-left : 40%;
+            width: 25%;
             .groupMembersText{
                 font-size : 17px;
                 color:#404040;   
@@ -153,6 +155,34 @@
                 font-size : 17px;
             }
         }
+
+        .groupCreatedDate{
+            width: 45%;
+            text-align : left;
+
+            .groupCreatedDateText{
+                font-size : 17px;
+                color : #404040;
+            }
+
+            .groupCreatedDateDate{
+                color : gray;
+            }
+        }
     }
 }
 
+
+
+.modalFooterContainer{
+    
+
+    .modalFooterGroupDeleteBtn{
+        border-radius: 3px;
+    }
+    
+    .modalFooterGroupEditBtn{
+        border-radius: 3px;
+    }
+
+}
