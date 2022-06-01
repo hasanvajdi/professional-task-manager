@@ -1,0 +1,525 @@
+.profileContainer {
+  -webkit-box-shadow: 0px 5px 10px #e6e6e6;
+          box-shadow: 0px 5px 10px #e6e6e6;
+  background-color: #F5F5F5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: auto;
+}
+
+.profileContainer .profileHeader {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+}
+
+.profileContainer .profileHeader .headerUserContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileContainer .profileHeader .headerUserContainer .headerUserIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 18px;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  color: gray;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  cursor: pointer;
+}
+
+.profileContainer .profileHeader .headerUserContainer .headerNavIcon {
+  margin: auto 7px auto 0px;
+  font-size: 15px;
+  color: #686868;
+  font-weight: bold !important;
+}
+
+.profileContainer .profileHeader .headerUserContainer .headerNavIcon:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.profileContainer .profileHeader .headerSettingCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.profileContainer .profileHeader .headerSettingCol .headerSettingIcon {
+  font-size: 23px;
+  margin-left: 18px;
+  color: gray;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+          transition-timing-function: ease-in;
+}
+
+.profileContainer .profileHeader .headerSettingCol .headerSettingIcon:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.profileContainer .profileBody {
+  width: 80%;
+}
+
+.profileContainer .profileBody .allStatisticsCol {
+  width: 100%;
+  height: auto !important;
+  margin-top: 50px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow, .profileContainer .profileBody .allStatisticsCol .userStatisticRow {
+  width: 100%;
+  height: 14%;
+  margin-top: 30px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsGroups, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsGroups, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticToday {
+  height: 100%;
+  background-color: #4b2d83;
+  border-radius: 7px !important;
+  -webkit-box-shadow: 0px 5px 10px #e0e0e0;
+          box-shadow: 0px 5px 10px #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsGroups span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsGroups span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticToday span:nth-child(1) {
+  font-size: 40px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsGroups span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsGroups span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticToday span:nth-child(2) {
+  font-size: 20px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsUsers, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsUsers, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticRecent {
+  height: 100%;
+  background-color: #96242f;
+  border-radius: 7px !important;
+  -webkit-box-shadow: 0px 5px 10px #e0e0e0;
+          box-shadow: 0px 5px 10px #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsUsers span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsUsers span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticRecent span:nth-child(1) {
+  font-size: 40px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsUsers span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsUsers span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticRecent span:nth-child(2) {
+  font-size: 20px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsTasks, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsTasks, .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticOnline {
+  height: 100%;
+  background-color: #3c6efd;
+  border-radius: 7px !important;
+  -webkit-box-shadow: 0px 5px 10px #e0e0e0;
+          box-shadow: 0px 5px 10px #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsTasks span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsTasks span:nth-child(1), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticOnline span:nth-child(1) {
+  font-size: 40px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .allStatisticsColRow .allStatisticsTasks span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .allStatisticsTasks span:nth-child(2), .profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticOnline span:nth-child(2) {
+  font-size: 20px;
+  color: white;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow {
+  width: 100%;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList {
+  height: 100%;
+  background-color: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 5px 10px #e6e6e6;
+          box-shadow: 0px 5px 10px #e6e6e6;
+  border-top: 2px solid #4b2d83;
+  color: gray;
+  font-size: 15px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList:hover span {
+  color: black;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList:hover .groupListIcon {
+  color: #4b2d83;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowDiv {
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 20%;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowDiv span {
+  margin-right: 12px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowDiv .groupListIcon {
+  font-size: 19px;
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowList {
+  overflow-y: scroll;
+  height: 80%;
+  width: 100%;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowList::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f2f2f2;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupList .groupRowList::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 8px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork {
+  background-color: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 5px 10px #e6e6e6;
+          box-shadow: 0px 5px 10px #e6e6e6;
+  border-top: 2px solid #4b2d83;
+  color: gray;
+  font-size: 15px;
+  text-align: right;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork:hover span {
+  color: black;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork:hover .groupMostWorkIcon {
+  color: #4b2d83;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork div span {
+  padding-right: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .groupRow .groupMostWork div .groupMostWorkIcon {
+  margin-right: auto;
+  font-size: 19px;
+  margin-left: 10px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .userStatisticRow {
+  margin-top: 70px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticToday {
+  background-color: #D32F2F !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticRecent {
+  background-color: #FFC400 !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .userStatisticRow .userStatisticOnline {
+  background-color: #00C853 !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow, .profileContainer .profileBody .allStatisticsCol .tasksRow {
+  width: 100%;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList {
+  background-color: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 5px 10px #e6e6e6;
+          box-shadow: 0px 5px 10px #e6e6e6;
+  border-top: 2px solid #96242f;
+  color: gray;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList:hover .usersRowDiv span, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList:hover .usersRowDiv span, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList:hover .usersRowDiv span {
+  color: black;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList:hover .userListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList:hover .userListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList:hover .userListIcon, .profileContainer .profileBody .allStatisticsCol .usersRow .userList:hover .tasksRow .tasksList .tasksRowDiv .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList:hover .tasksList .tasksRowDiv .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .tasksRowDiv .userList:hover .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList:hover .tasksRowDiv .taskListIcon {
+  color: #96242f;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList .usersRowDiv, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList .usersRowDiv, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .usersRowDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList .usersRowDiv span, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList .usersRowDiv span, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .usersRowDiv span {
+  margin-right: 12px;
+  font-size: 15px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList .usersRowDiv .userListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList .usersRowDiv .userListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .usersRowDiv .userListIcon, .profileContainer .profileBody .allStatisticsCol .usersRow .userList .usersRowDiv .tasksRow .tasksList .tasksRowDiv .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList .usersRowDiv .tasksList .tasksRowDiv .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .usersRowDiv .tasksRowDiv .taskListIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .tasksRowDiv .usersRowDiv .taskListIcon {
+  font-size: 19px;
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .userList .usersRowList, .profileContainer .profileBody .allStatisticsCol .tasksRow .userList .usersRowList, .profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .usersRowList {
+  height: 80%;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks {
+  background-color: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 5px 10px #e6e6e6;
+          box-shadow: 0px 5px 10px #e6e6e6;
+  border-top: 2px solid #96242f;
+  color: gray;
+  font-size: 15px;
+  text-align: right;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers:hover span, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers:hover span, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks:hover span {
+  color: black;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers:hover .todayUsersIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers:hover .todayUsersIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks:hover .todayUsersIcon {
+  color: #96242f;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers div, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers div, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers div span, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers div span, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks div span {
+  padding-right: 10px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .usersRow .todayUsers div .todayUsersIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .todayUsers div .todayUsersIcon, .profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks div .todayUsersIcon {
+  margin-right: auto;
+  margin-left: 10px;
+  font-size: 19px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList {
+  border-color: #3c6efd !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList:hover .taskListIcon {
+  color: #3c6efd !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .tasksRowDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .tasksRowDiv span {
+  margin-right: 12px;
+  font-size: 15px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .tasksList .tasksRowDiv .taskListIcon {
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks {
+  border-color: #3c6efd !important;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks:hover .lastTasksIcon {
+  color: #3c6efd;
+}
+
+.profileContainer .profileBody .allStatisticsCol .tasksRow .lastTasks div .lastTasksIcon {
+  margin-right: auto;
+  margin-left: 10px;
+  font-size: 19px;
+  padding-left: 0 !important;
+}
+
+.userMenuItem .userMenuIcon {
+  font-size: 18px;
+  color: gray;
+}
+
+.userMenuLogout {
+  color: red;
+}
+
+.noDataContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.noDataContainer:hover .noDataIcon, .noDataContainer:hover .noDataText {
+  color: lightgray !important;
+}
+
+.noDataContainer .noDataIcon {
+  font-size: 50px;
+  color: lightgray !important;
+}
+
+.noDataContainer .noDataText {
+  margin-top: 10px;
+  font-size: 17px;
+  color: lightgray !important;
+}
+/*# sourceMappingURL=dashboard.module.css.map */

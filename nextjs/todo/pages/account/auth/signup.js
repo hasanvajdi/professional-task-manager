@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const sginupExpressApi = async (values)=>{
-    await axios.post("/api/account/signup/", values)
+    await axios.post("/api/account/auth/signup/", values)
 }
 
 const signup = ()=>{

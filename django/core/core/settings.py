@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-g*uo&j!8o$cc4@-zx(7xs)r==jje%sg_c$_3ck#qyd7dmme&ox
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -64,16 +64,26 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 CORS_ALLOW_CREDENTIALS = True
+
 CORS_ORIGIN_WHITELIST =  (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 )
 
+CORS_ALLOWED_ORIGINS  =  [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
+ALLOWED_HOSTS = [
+    'localhost'
+]
+
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',    
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -165,10 +175,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ],
-
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
 }
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

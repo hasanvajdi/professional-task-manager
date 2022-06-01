@@ -4,7 +4,7 @@ import groupStyle from '../styles/components/group.module.scss'
 import { EyeOutlined, LinkOutlined } from "@ant-design/icons"
 import { Modal, Badge, Button, Popconfirm  } from 'antd'
 
-import { deleteObj } from '../api'
+import { deleteObj } from '../pages/api'
 
 
 

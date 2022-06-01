@@ -1,24 +1,23 @@
-import { apiSignup } from '../../../api'
 import cookie from 'cookie';
 
 
 const nextSignup = async (req, res)=>{
     try{
         const signupData = JSON.stringify(req.body)
-        const data = await apiSignup(signupData)
+        const data = await authApi.post("/signup/", signupData, {
+                        headers:{
+                            "Content-Type":"application/json",
+                        },
+                    })
+
+
         res.setHeader('Set-Cookie',
             [
                 cookie.serialize('access_token', data.access_token, {
-                    secure: true,
-                    httpOnly: true,
-                    sameSite: "lax",
                     path: '/',
                 }),
         
                 cookie.serialize('refresh_token', data.refresh_token, {
-                    secure: true,
-                    httpOnly: true,
-                    sameSite: "lax",
                     path: '/',
                 }),
             ]

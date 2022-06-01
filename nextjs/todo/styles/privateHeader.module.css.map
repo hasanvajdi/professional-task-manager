@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AAMA,AAGQ,OAHD,CAEH,UAAU,CACN,SAAS,CAAA;EACL,eAAe,EAAE,IAAI;EGT7B,OAAO,EAAE,IAAI;EACb,cAAc,EAFQ,GAAG;EAGzB,eAAe,EAHqB,MAAM;EAI1C,WAAW,EAJwC,MAAM;CH0BpD;;AApBT,AAOY,OAPL,CAEH,UAAU,CACN,SAAS,CAIL,eAAe,CAAA;EACX,KAAK,EAAG,KAAK;EACb,aAAa,EAAG,IAAI;EACpB,YAAY,EAAG,IAAI;EACnB,UAAU,EAAG,IAAI;EACjB,SAAS,EAAG,IAAI;CAOnB;;AAnBb,AAcgB,OAdT,CAEH,UAAU,CACN,SAAS,CAIL,eAAe,AAOV,MAAM,CAAA;EACH,KAAK,ECnBT,OAAO;EDoBH,MAAM,EAAE,OAAO;EGd/B,mBAAmB,EAAE,GAAG;EACxB,mBAAmB,EAFK,IAAI;EAG5B,0BAA0B,EAAE,OAAO;CHctB",
+    "sources": [
+        "privateHeader.module.scss",
+        "_colors.scss",
+        "_variables.scss",
+        "_tools.scss"
+    ],
+    "names": [],
+    "file": "privateHeader.module.css"
+}

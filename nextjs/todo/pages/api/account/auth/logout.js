@@ -1,4 +1,4 @@
-import { apiLogout } from '../../../api'
+import { authApi } from '../../../api'
 import cookie from 'cookie';
 
 

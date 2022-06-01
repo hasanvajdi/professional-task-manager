@@ -5,6 +5,7 @@ import 'animate.css'
 import 'antd/dist/antd.variable.min.css';
 import { ConfigProvider } from 'antd';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { CookiesProvider } from "react-cookie"
 
 
 
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }) {
     <ConfigProvider direction="rtl">
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          <CookiesProvider>
+            <Component {...pageProps} />
+          </CookiesProvider>
         </Hydrate>
       </QueryClientProvider>
     </ConfigProvider>

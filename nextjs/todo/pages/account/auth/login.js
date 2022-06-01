@@ -1,12 +1,13 @@
 //React
 import { useState } from 'react';
 //other
-import accountStyle from '../../styles/account.module.scss'
+import accountStyle from '../../../styles/account.module.scss'
 import axios from 'axios';
-import Header from '../../components/headers/PublickHeader.js'
+import Header from '../../../components/headers/PublickHeader.js'
 //adnt design
 import { Row, Col, Form, Input, Button, Checkbox, Spin, Result } from 'antd';
 import { LoadingOutlined, UserOutlined, LockOutlined, GithubOutlined, GoogleOutlined, LinkedinOutlined, ConsoleSqlOutlined } from '@ant-design/icons';
+
 //react query
 import { useMutation } from "react-query"
 
@@ -20,8 +21,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const loginExpressApi = async (values)=>{
-    await axios.post("/api/account/login/", values)
+    await axios.post("/api/account/auth/login/", values)
 }
+
 
 const login = ()=>{
     const nextRouter = useRouter();
@@ -54,7 +56,7 @@ const login = ()=>{
             />)
 
             setTimeout(()=>{
-                nextRouter.push("dashboard")
+                nextRouter.replace("/account/dashboard")
             }, 1000)
         }
     })

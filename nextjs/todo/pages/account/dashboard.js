@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import PrivateHeader from '../../components/headers/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
-import JwtToken from '../api/account/jwt_token';
 import { useRouter } from 'next/router'
 
 //ant design
@@ -12,18 +11,22 @@ import {
             CaretDownOutlined, UserOutlined, SettingFilled, 
             FrownOutlined
         } from '@ant-design/icons';
+
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
 
-//api folder
-import * as api from '../../api'
 import axios from 'axios';
+
 
 // components
 import Group from '../../components/Group'
 import User from '../../components/User'
 import Task from '../../components/Task'
 
+import getGroups from '../api/account/dashboard/groups'
 
+
+
+import { useCookies } from "react-cookie"
 
 const logout = async ()=>{
     const { data } = await axios.post("/api/account/logout/")
@@ -31,12 +34,17 @@ const logout = async ()=>{
 }
 
 
-const dashboard = (props)=>{
-    const [groups, setGroups] = useState(props.groups)
-    const [tasks, setTasks] = useState(props.tasks)
-    const [users, setUsers] = useState(props.users)
 
+
+const dashboard = (props)=>{
     const router = useRouter()
+    const [cookie, setCookie] = useCookies(["user"])
+    
+
+    const [groups, setGroups] = useState({"list":{1:"1", 2:"2"}})
+    const [tasks, setTasks] = useState({"list":{1:"1", 2:"2"}})
+    const [users, setUsers] = useState({"list":{1:"1", 2:"2"}})
+
 
     const logoutClickHandler = async ()=>{
         const logoutResult = await logout()
@@ -89,7 +97,7 @@ const dashboard = (props)=>{
                         <Row className={dashboardStyle.allStatisticsColRow} justify="space-between" >
 
                             <Col className={dashboardStyle.allStatisticsGroups} span={7}>
-                                <span>{groups.list?.length}</span>
+                                <span>{groups && groups.list?.length}</span>
                                 <span>کل گروه ها</span>
                             </Col>
 
@@ -231,42 +239,12 @@ const dashboard = (props)=>{
     
 
 
-export async function getServerSideProps(context){
-    const JwtTokenResult = await JwtToken(context.req, context.res)
-    var access_token = null
-
-    if (JwtTokenResult.valid){
-        access_token = context.req.cookies.access_token;
-    }
-    else if (JwtTokenResult.access){
-        access_token = JwtTokenResult.access
-    }
-    else if (JwtTokenResult.error){
-        return {
-            redirect: {
-                destination: '/account/login',
-            },
-        }
-    }
-    
-    
-    const groups    = await api.getGroups(access_token)
-    const tasks     = await api.getTasks(access_token)
-    const users     = await api.getUsers(access_token)
-
+export async function getServerSideProps(context){ 
+    const groups = await getGroups(context.req, context.res);
+    console.log('groups :', groups)
     return {
         props : {
-            groups : {
-                list : groups,
-            },
-
-            tasks : {
-                list : tasks,
-            },
-
-            users : {
-                list : users,
-            }
+            groups : "1"
         }
     }
 
