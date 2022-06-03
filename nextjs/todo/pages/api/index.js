@@ -19,6 +19,7 @@ const authApi = axios.create({
 })
 
 
+
 const deleteObj = async (typeobj, id)=>{
     const { data } = api.delete(`${typeobj}/${id}`)
     console.log("del data :", data)

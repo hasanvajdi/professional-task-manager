@@ -16,32 +16,44 @@ const getGroupsApi = async (token)=>{
 
 const getGroups = async (req, res)=>{
     try{
-        const groupsList = await getGroupsApi(req.cookies.access_token)
-        return groupsList
+        const groupList = await getGroupsApi(req.cookies.access_token)
+        return groupList
     }
+
+    catch(err){
+        if(err.response && err.response.status == 401){
+            try{
+                const newAccessToken = await refreshToken(req.cookies.refresh_token)
     
-    catch(groupErr){
-        if(groupErr.response.status==401){
-            // get new access token with sending refresh token
-            const newAccessToken = await refreshToken(req.cookies.refresh_token)
-            // set new access token in cookies
-            res.setHeader('Set-Cookie',
+                res.setHeader('Set-Cookie',
                     [
                         cookie.serialize('access_token', newAccessToken, {
                             path: '/',
-                            httpOnly: true,
-                            secure: true,
-                            sameSite: "lax"
+                            httpOnly:true,
+                            sameSite:"lax",
+                            secure:true
                         }),
+                
                     ]
-            );
-            // get group data again
-            const groupsList = await getGroupsApi(newAccessToken)
-            return groupsList
+                );
+    
+                const groupList2 = await getGroupsApi(newAccessToken)
+                return groupList2
+            }
+            catch(refreshError){
+                throw "refresh token error"
+            }
         }
-    }
 
-    return "groupsList"
+        
+    }
+    
+    if (res.redirect){
+        res.redirect(200, "/")
+    }
 }
 
 export default getGroups;
+
+
+

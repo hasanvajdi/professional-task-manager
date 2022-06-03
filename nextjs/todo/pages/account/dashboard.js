@@ -14,8 +14,6 @@ import {
 
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
 
-import axios from 'axios';
-
 
 // components
 import Group from '../../components/Group'
@@ -27,6 +25,8 @@ import getGroups from '../api/account/dashboard/groups'
 
 
 import { useCookies } from "react-cookie"
+import axios from 'axios';
+
 
 const logout = async ()=>{
     const { data } = await axios.post("/api/account/logout/")
@@ -40,7 +40,8 @@ const dashboard = (props)=>{
     const router = useRouter()
     const [cookie, setCookie] = useCookies(["user"])
     
-
+    //const groupsReq = axios.get("/api/account/dashboard/groups")
+    
     const [groups, setGroups] = useState({"list":{1:"1", 2:"2"}})
     const [tasks, setTasks] = useState({"list":{1:"1", 2:"2"}})
     const [users, setUsers] = useState({"list":{1:"1", 2:"2"}})
@@ -239,14 +240,26 @@ const dashboard = (props)=>{
     
 
 
-export async function getServerSideProps(context){ 
-    const groups = await getGroups(context.req, context.res);
-    console.log('groups :', groups)
-    return {
-        props : {
-            groups : "1"
+export async function getServerSideProps(contex){ 
+    try{
+        const groups = await getGroups(contex.req, contex.res)
+        console.log("groupsgroupsgroupsgroupsgroups")
+
+        return {
+            props : {
+                groups : "1"
+            }
         }
     }
+    catch(ssrError){
+        return {
+            redirect: {
+                destination : "/account/auth/login/"
+            }
+        }
+    }
+
+    
 
 }
 

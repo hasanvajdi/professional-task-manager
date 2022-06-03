@@ -28,8 +28,6 @@ const nextLogin = async (req, res)=>{
 
     }
     catch(err){
-        console.log("err login : ", err)
-
         let errorText = ""
 
         if(err.response){
