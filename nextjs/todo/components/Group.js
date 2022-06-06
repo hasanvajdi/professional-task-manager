@@ -1,14 +1,17 @@
 import { useState } from 'react'
-
 import groupStyle from '../styles/components/group.module.scss'
+import { useCookies } from "react-cookie"
 import { EyeOutlined, LinkOutlined } from "@ant-design/icons"
 import { Modal, Badge, Button, Popconfirm  } from 'antd'
-
-import { deleteObj } from '../pages/api'
-
+import Cookies from 'universal-cookie';
 
 
-const Group = ({ data })=>{
+import { routeApi } from "../pages/api/index"
+
+
+
+const Group = ({ data, setGroups, groupsState })=>{
+    const cookies = new Cookies();
     const [modalVisiblity, setModalVisiblity] = useState(false)
     const [groupData, setGroupData] = useState(data)
 
@@ -17,12 +20,22 @@ const Group = ({ data })=>{
     };
 
     const deleteGroupHandler= ()=>{
-        console.log("del group", groupData.group_id)
-        deleteObj("group", groupData.group_id)
+        const reqCookies = {access_token:cookies.get("access_token"), refresh_token:cookies.get("refresh_token")}
+        routeApi.delete(`/account/dashboard/groups?id=${groupData.group_id}`)
+        
+        // update groups state and remove deleted group
+        //setGroups(
+        //    groupsState.filter((group)=>{group.group_id !== groupData.group_id})
+        //)
     }
 
     const editGroupHandler=() =>{
         console.log("edit group")
+    }
+
+
+    const copyGroupLinkHandler = ()=>{
+        navigator.clipboard.writeText(groupData.link)
     }
     
 
@@ -54,8 +67,8 @@ const Group = ({ data })=>{
                 >
                     <div className={groupStyle.groupModalContainer}>   
                         <div className={groupStyle.groupLinkContainer}>
-                            <div className={groupStyle.copyContainer}>
-                                <span >کپی</span>
+                            <div className={groupStyle.copyContainer}  onClick={copyGroupLinkHandler}>
+                                <span>کپی</span>
                                 <LinkOutlined className={groupStyle.copyIcon}/>
                             </div>
                             <span className={groupStyle.groupLinkText}>{ groupData.link } </span>

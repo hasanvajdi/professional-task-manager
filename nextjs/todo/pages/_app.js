@@ -23,11 +23,11 @@ function MyApp({ Component, pageProps }) {
   return(
     <ConfigProvider direction="rtl">
       <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
           <CookiesProvider>
-            <Component {...pageProps} />
+            <Hydrate state={pageProps.dehydratedState}>
+              <Component {...pageProps} />
+            </Hydrate>
           </CookiesProvider>
-        </Hydrate>
       </QueryClientProvider>
     </ConfigProvider>
   )

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-
+import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { useRouter } from 'next/router'
+import axios from 'axios'; 
 import PrivateHeader from '../../components/headers/PrivateHeader';
 import dashboardStyle from '../../styles/dashboard.module.scss'
-import { useRouter } from 'next/router'
 
 //ant design
 import { Row, Col, Menu, Dropdown } from 'antd';
@@ -14,18 +15,16 @@ import {
 
 import { BsPeopleFill, BsPersonFill, BsListTask, BsAwardFill, BsSkipEndFill } from "react-icons/bs";
 
-
 // components
 import Group from '../../components/Group'
 import User from '../../components/User'
 import Task from '../../components/Task'
 
+
+// api routes
 import getGroups from '../api/account/dashboard/groups'
-
-
-
-import { useCookies } from "react-cookie"
-import axios from 'axios';
+import getTasks from '../api/account/dashboard/tasks'
+import getUsers from '../api/account/dashboard/users'
 
 
 const logout = async ()=>{
@@ -38,13 +37,11 @@ const logout = async ()=>{
 
 const dashboard = (props)=>{
     const router = useRouter()
-    const [cookie, setCookie] = useCookies(["user"])
+     
     
-    //const groupsReq = axios.get("/api/account/dashboard/groups")
-    
-    const [groups, setGroups] = useState({"list":{1:"1", 2:"2"}})
-    const [tasks, setTasks] = useState({"list":{1:"1", 2:"2"}})
-    const [users, setUsers] = useState({"list":{1:"1", 2:"2"}})
+    const [groups, setGroups] = useState(props.groups)
+    const [tasks, setTasks] = useState(props.tasks)
+    const [users, setUsers] = useState(props.users)
 
 
     const logoutClickHandler = async ()=>{
@@ -98,17 +95,17 @@ const dashboard = (props)=>{
                         <Row className={dashboardStyle.allStatisticsColRow} justify="space-between" >
 
                             <Col className={dashboardStyle.allStatisticsGroups} span={7}>
-                                <span>{groups && groups.list?.length}</span>
+                                <span>{groups && groups?.length}</span>
                                 <span>کل گروه ها</span>
                             </Col>
 
                             <Col className={dashboardStyle.allStatisticsUsers} span={7}>
-                                <span>{ users.list?.length }</span>
+                                <span>{ users?.length }</span>
                                 <span>کل کاربر ها</span>
                             </Col>
 
                             <Col className={dashboardStyle.allStatisticsTasks} span={7}>
-                                <span>{ tasks.list?.length }</span>
+                                <span>{ tasks?.length }</span>
                                 <span>کل وظیفه ها</span>
                             </Col>
                         </Row>
@@ -121,12 +118,14 @@ const dashboard = (props)=>{
                                </div>
                                <div className={dashboardStyle.groupRowList} >
                                     {   
-                                        groups.list ?
-                                            groups.list.length > 0 ?
-                                                groups.list.map((group, key)=>{
+                                        groups ?
+                                            groups.length > 0 ?
+                                                groups.map((group, key)=>{
                                                     return <Group 
                                                                 key={key} 
-                                                                data={group} 
+                                                                data={group}
+                                                                setGroups={setGroups} 
+                                                                groupsState={groups}
                                                             />
                                                 })
                                             : <div className={dashboardStyle.noDataContainer}>
@@ -176,8 +175,8 @@ const dashboard = (props)=>{
                                 <div className={dashboardStyle.usersRowList}>
                                     {   
                                         users ?
-                                            users.list.length > 0 ?
-                                                users.list.map((user, key)=>{
+                                            users.length > 0 ?
+                                                users.map((user, key)=>{
                                                     return <User key={key} data={user} />
 
                                                 })
@@ -208,9 +207,9 @@ const dashboard = (props)=>{
 
                                 <div className={dashboardStyle.userRowList}>
                                     {
-                                        tasks.list ? 
-                                            tasks.list.length > 0 ?
-                                                tasks.list.map((task, key)=>{
+                                        tasks ? 
+                                            tasks.length > 0 ?
+                                                tasks.map((task, key)=>{
                                                     return <Task key={key} data={task} />
                                                 })
                                             : <div className={dashboardStyle.noDataContainer}>
@@ -240,14 +239,17 @@ const dashboard = (props)=>{
     
 
 
-export async function getServerSideProps(contex){ 
+export async function getServerSideProps(){ 
     try{
-        const groups = await getGroups(contex.req, contex.res)
-        console.log("groupsgroupsgroupsgroupsgroups")
+        const groups = await getGroups()
+        const tasks  = await getTasks()
+        const users  = await getUsers()
 
         return {
             props : {
-                groups : "1"
+                groups: groups,
+                tasks: tasks,
+                users: users
             }
         }
     }
@@ -258,10 +260,9 @@ export async function getServerSideProps(contex){
             }
         }
     }
-
-    
-
 }
 
 
 export default dashboard;
+
+

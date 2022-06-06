@@ -39,7 +39,6 @@ class GroupListSerializer(ModelSerializer):
     
 
     def get_created_date(self, obj):
-        print("careated_time : ", obj.created_date)
         return {
             "date" : obj.created_date.strftime("%Y/%m/%d"),
             "time" : obj.created_date.strftime("%H:%M")
